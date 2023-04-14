@@ -1,20 +1,14 @@
 package com.bav.ordermanagementsystem.entity;
 
-import com.bav.ordermanagementsystem.db.annotations.Column;
-import com.bav.ordermanagementsystem.db.annotations.Entity;
-import com.bav.ordermanagementsystem.db.annotations.GeneratedValue;
-import com.bav.ordermanagementsystem.db.annotations.GenerationType;
-import com.bav.ordermanagementsystem.db.annotations.Id;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "order_status")
 public class OrderStatus {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @PrimaryKey(autoGenerate = true)
     private Long id;
 
-    @Column(name = "title", nullable = false)
     private String title;
 
     public OrderStatus(){}

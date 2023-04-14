@@ -1,39 +1,28 @@
 package com.bav.ordermanagementsystem.entity;
 
-import com.bav.ordermanagementsystem.db.annotations.Column;
-import com.bav.ordermanagementsystem.db.annotations.Entity;
-import com.bav.ordermanagementsystem.db.annotations.GeneratedValue;
-import com.bav.ordermanagementsystem.db.annotations.GenerationType;
-import com.bav.ordermanagementsystem.db.annotations.Id;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import com.bav.ordermanagementsystem.interfaces.UserDetails;
 
 @Entity
 public class Client implements UserDetails {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @PrimaryKey(autoGenerate = true)
     private Long id;
 
-    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "second_name", nullable = false)
     private String secondName;
 
-    @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "phone", nullable = false)
     private Long phone;
 
-    @Column(name = "login", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String login;
 
-    @Column(name = "password", nullable = false)
     private String password;
 
     public Client(){}

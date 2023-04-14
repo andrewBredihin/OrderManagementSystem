@@ -1,51 +1,44 @@
 package com.bav.ordermanagementsystem.entity;
 
-import com.bav.ordermanagementsystem.db.annotations.Column;
-import com.bav.ordermanagementsystem.db.annotations.Entity;
-import com.bav.ordermanagementsystem.db.annotations.GeneratedValue;
-import com.bav.ordermanagementsystem.db.annotations.GenerationType;
-import com.bav.ordermanagementsystem.db.annotations.Id;
-import com.bav.ordermanagementsystem.db.annotations.JoinColumn;
-import com.bav.ordermanagementsystem.db.annotations.ManyToOne;
-import com.bav.ordermanagementsystem.db.annotations.OneToMany;
+import androidx.room.ColumnInfo;
+import androidx.room.Embedded;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
 
 import java.sql.Date;
 import java.util.Collection;
 
-@Entity
+@Entity(tableName = "order", foreignKeys = {
+        @ForeignKey(entity = Employee.class, parentColumns = "id", childColumns = "employee_id"),
+        @ForeignKey(entity = Client.class, parentColumns = "id", childColumns = "client_id"),
+        @ForeignKey(entity = OrderStatus.class, parentColumns = "id", childColumns = "status_id")
+})
 public class Order {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @PrimaryKey(autoGenerate = true)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "employee_id")
-    private Employee employee;
+    @ColumnInfo(index = true)
+    private Long employee_id;
 
-    @ManyToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
+    @ColumnInfo(index = true)
+    private Long client_id;
 
-    @ManyToOne
-    @JoinColumn(name = "status_id")
-    private OrderStatus status;
+    @ColumnInfo(index = true)
+    private Long status_id;
 
-    @Column(name = "price", nullable = false)
+    @Embedded
+    private Collection<OrderItem> items;
+
     private double price;
 
-    @Column(name = "address", nullable = false)
     private String address;
 
-    @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "date", nullable = false)
     private Date date;
 
-    @OneToMany(mappedBy = "order")
-    private Collection<OrderItem> items;
 
     public Order(){}
 
@@ -57,28 +50,28 @@ public class Order {
         this.id = id;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public Long getEmployee_id() {
+        return employee_id;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setEmployee_id(Long employee_id) {
+        this.employee_id = employee_id;
     }
 
-    public Client getClient() {
-        return client;
+    public Long getClient_id() {
+        return client_id;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClient_id(Long client_id) {
+        this.client_id = client_id;
     }
 
-    public OrderStatus getStatus() {
-        return status;
+    public Long getStatus_id() {
+        return status_id;
     }
 
-    public void setStatus(OrderStatus status) {
-        this.status = status;
+    public void setStatus_id(Long status_id) {
+        this.status_id = status_id;
     }
 
     public double getPrice() {
