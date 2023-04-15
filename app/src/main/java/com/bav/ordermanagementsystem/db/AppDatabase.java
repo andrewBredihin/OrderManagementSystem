@@ -16,8 +16,7 @@ import com.bav.ordermanagementsystem.entity.OrderStatus;
 @Database(entities = {Employee.class,
         Client.class,
         Order.class,
-        OrderStatus.class,
-        OrderItem.class}, version = 1)
+        OrderStatus.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract EmployeeDao employeeDao();
     public abstract ClientDao clientDao();

@@ -1,13 +1,13 @@
 package com.bav.ordermanagementsystem.entity;
 
 import androidx.room.ColumnInfo;
-import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-import java.sql.Date;
 import java.util.Collection;
+import java.util.List;
 
 @Entity(tableName = "order", foreignKeys = {
         @ForeignKey(entity = Employee.class, parentColumns = "id", childColumns = "employee_id"),
@@ -28,8 +28,8 @@ public class Order {
     @ColumnInfo(index = true)
     private Long status_id;
 
-    @Embedded
-    private Collection<OrderItem> items;
+    @Ignore
+    private List<OrderItem> items;
 
     private double price;
 
@@ -37,7 +37,7 @@ public class Order {
 
     private String title;
 
-    private Date date;
+    private String date;
 
 
     public Order(){}
@@ -98,11 +98,11 @@ public class Order {
         this.title = title;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -110,7 +110,7 @@ public class Order {
         return items;
     }
 
-    public void setItems(Collection<OrderItem> items) {
+    public void setItems(List<OrderItem> items) {
         this.items = items;
     }
 }
