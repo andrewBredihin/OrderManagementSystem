@@ -12,6 +12,15 @@
     <string name="loginButtonText">Войти</string>
     <string name="registrationButtonText">Регистрация</string>
 
+    <string name="registration_first_name">Имя</string>
+    <string name="registration_last_name">Фамилия</string>
+    <string name="registration_second_name">Отчество</string>
+    <string name="registration_mail">Почта</string>
+    <string name="registration_phone">Телефон</string>
+    <string name="registration_login">Логин</string>
+    <string name="registration_password">Пароль</string>
+    <string name="registration_confirm_password">Подтвердить пароль</string>
+
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>

@@ -54,12 +54,22 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.2"
-            android:orientation="vertical"
-            android:padding="5dp"></LinearLayout>
+            android:padding="5dp"
+            android:scrollbars="none">
+            <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/fragment_container_view_registration"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:name="com.bav.ordermanagementsystem.fragment.RegistrationFragment"></androidx.fragment.app.FragmentContainerView>
+            </ScrollView>
+        </ScrollView>
 
         <FrameLayout
             android:layout_width="match_parent"
