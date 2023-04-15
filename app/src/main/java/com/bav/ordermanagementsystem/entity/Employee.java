@@ -3,7 +3,7 @@ package com.bav.ordermanagementsystem.entity;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.bav.ordermanagementsystem.interfaces.UserDetails;
+import com.bav.ordermanagementsystem.service.UserDetails;
 
 @Entity
 public class Employee implements UserDetails {

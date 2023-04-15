@@ -1,4 +1,4 @@
-package com.bav.ordermanagementsystem.interfaces;
+package com.bav.ordermanagementsystem.service;
 
 import java.io.Serializable;
 
