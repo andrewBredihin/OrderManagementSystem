@@ -10,6 +10,8 @@ public class UserService implements UserDetailsService {
     private static UserService mInstance;
     private DatabaseClient client;
 
+    private UserDetails user;
+
 
     private UserService(Context mCtx) {
         this.mCtx = mCtx;
@@ -46,5 +48,13 @@ public class UserService implements UserDetailsService {
     public boolean updateUser(UserDetails user) {
         //Прописать взаимодействие с БД
         return false;
+    }
+
+    public UserDetails getUser() {
+        return user;
+    }
+
+    public void setUser(UserDetails user) {
+        this.user = user;
     }
 }

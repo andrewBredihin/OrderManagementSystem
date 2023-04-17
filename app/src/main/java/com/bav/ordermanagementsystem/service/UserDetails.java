@@ -14,4 +14,6 @@ public interface UserDetails extends Serializable {
 
     String getRole();
 
+    Long getId();
+
 }
