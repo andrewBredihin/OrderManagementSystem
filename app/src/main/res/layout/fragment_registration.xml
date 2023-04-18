@@ -23,7 +23,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:textSize="24sp"
-            android:hint="@string/registration_first_name"/>
+            android:hint="@string/registration_first_name" />
 
         <EditText
             android:id="@+id/editTextLastNameRegistrationPage"

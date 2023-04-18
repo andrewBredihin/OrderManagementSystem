@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.bav.ordermanagementsystem.db.DatabaseClient;
 
+import java.util.Map;
+
 public class UserService implements UserDetailsService {
 
     private Context mCtx;
@@ -27,7 +29,7 @@ public class UserService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails getUser(String login, String password) {
+    public Map<String, UserDetails> getUser(String login, String password) {
         //Прописать взаимодействие с БД
         return null;
     }

@@ -1,8 +1,10 @@
 package com.bav.ordermanagementsystem.service;
 
+import java.util.Map;
+
 public interface UserDetailsService {
 
-    UserDetails getUser(String login, String password);
+    Map<String, UserDetails> getUser(String login, String password);
 
     boolean saveUser(UserDetails user);
 
