@@ -51,7 +51,7 @@ public class ActiveOrdersFragment extends Fragment {
 
         @Override
         protected List<Order> doInBackground(Void... voids) {
-            Long employeeId = UserService.getInstance(getContext()).getUser().getId();
+            Long employeeId = UserService.getInstance(getContext()).getUserDetails().getId();
             return DatabaseClient.getInstance(getContext()).getAppDatabase().orderDao().getByEmployeeIdAndStatusId(employeeId, 0l).getValue();
         }
 

@@ -24,6 +24,7 @@
     <string name="registration_confirm_password">Подтвердить пароль</string>
     <string name="errorRegistrationPage">Заполните все поля</string>
     <string name="errorPasswordRegistrationPage">Пароли не совпадают</string>
+    <string name="errorSaveRegistrationPage">Ошибка при сохранении пользователя, поворите попытку</string>
 
     <string name="active_orders">Активные заказы</string>
 

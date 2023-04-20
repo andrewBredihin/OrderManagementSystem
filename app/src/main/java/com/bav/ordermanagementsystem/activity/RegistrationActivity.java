@@ -9,12 +9,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bav.ordermanagementsystem.R;
 import com.bav.ordermanagementsystem.entity.Client;
 import com.bav.ordermanagementsystem.service.UserService;
+
+import io.reactivex.disposables.Disposable;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -29,6 +32,7 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+        userService = UserService.getInstance(getApplicationContext());
 
         login = findViewById(R.id.editTextLoginRegistrationPage);
         password = findViewById(R.id.editTextPasswordRegistrationPage);
@@ -59,8 +63,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 error.setVisibility(View.VISIBLE);
             }
             else {
-                userService = UserService.getInstance(getApplication());
-
                 Client client = new Client();
                 client.setFirstName(firstName.getText().toString());
                 client.setLastName(lastName.getText().toString());
@@ -69,7 +71,10 @@ public class RegistrationActivity extends AppCompatActivity {
                 client.setLogin(login.getText().toString());
                 client.setPassword(password.getText().toString());
 
-                userService.saveUser(client);
+                if (userService.saveUser(client)){
+                    Intent intent = new Intent(getApplication(), LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }

@@ -27,6 +27,19 @@ public class Client implements UserDetails {
 
     public Client(){}
 
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone=" + phone +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 
     @Override
     public String getLogin() {

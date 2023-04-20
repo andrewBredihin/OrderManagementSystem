@@ -10,14 +10,21 @@ import com.bav.ordermanagementsystem.entity.Client;
 
 import java.util.List;
 
+import io.reactivex.Completable;
+import io.reactivex.Flowable;
+import io.reactivex.Maybe;
+
 @Dao
 public interface ClientDao {
 
     @Query("SELECT * FROM client")
-    List<Client> getAll();
+    Flowable<List<Client>> getAll();
 
     @Query("SELECT * FROM client WHERE id = :clientId")
-    Client getById(Long clientId);
+    Maybe<Client> getById(Long clientId);
+
+    @Query("SELECT * FROM client WHERE login = :login AND password = :password")
+    Maybe<Client> getByLoginAndPassword(String login, String password);
 
     @Insert
     void insert(Client client);
