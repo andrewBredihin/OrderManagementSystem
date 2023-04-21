@@ -77,15 +77,6 @@
             android:layout_weight="0.7"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textViewErrorRegistrationPage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/errorRegistrationPage"
-                android:textColor="#FF0000"
-                android:visibility="invisible" />
-
             <Button
                 android:id="@+id/buttonRefistrationRegistrationPage"
                 android:layout_width="match_parent"

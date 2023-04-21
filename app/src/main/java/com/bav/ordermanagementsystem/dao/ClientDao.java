@@ -26,6 +26,9 @@ public interface ClientDao {
     @Query("SELECT * FROM client WHERE login = :login AND password = :password")
     Maybe<Client> getByLoginAndPassword(String login, String password);
 
+    @Query("SELECT * FROM client WHERE login = :login")
+    Maybe<Client> getByLogin(String login);
+
     @Insert
     void insert(Client client);
 

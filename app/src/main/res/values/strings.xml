@@ -18,13 +18,22 @@
     <string name="registration_last_name">Фамилия</string>
     <string name="registration_second_name">Отчество</string>
     <string name="registration_mail">Почта</string>
-    <string name="registration_phone">Телефон</string>
+    <string name="registration_phone">Телефон (без первой цифры) </string>
     <string name="registration_login">Логин</string>
     <string name="registration_password">Пароль</string>
     <string name="registration_confirm_password">Подтвердить пароль</string>
-    <string name="errorRegistrationPage">Заполните все поля</string>
-    <string name="errorPasswordRegistrationPage">Пароли не совпадают</string>
+
+    <string name="errorFirstNameRegistrationPage">Имя не должно быть короче 1 символов</string>
+    <string name="errorLastNameRegistrationPage">Фамилия не должна быть короче 1 символов</string>
+    <string name="errorSecondNameRegistrationPage">Отчество не должно быть короче 1 символов</string>
+    <string name="errorMailRegistrationPage">Неверный формат email</string>
+    <string name="errorLoginRegistrationPage">Логин не должен быть короче 6 символов</string>
+    <string name="errorPasswordRegistrationPage">Пароль не должен быть короче 6 символов</string>
+    <string name="errorPhoneRegistrationPage">Неверный формат номера телефона</string>
+    <string name="errorPasswordConfirmRegistrationPage">Пароли не совпадают</string>
     <string name="errorSaveRegistrationPage">Ошибка при сохранении пользователя, поворите попытку</string>
+    <string name="errorLoginAlreadyUsingRegistrationPage">Введенный логин уже используется</string>
+    <string name="savedSuccessfullyRegistrationPage">Пользователь зарегистрирован</string>
 
     <string name="active_orders">Активные заказы</string>
 

@@ -10,20 +10,23 @@ import com.bav.ordermanagementsystem.entity.Employee;
 
 import java.util.List;
 
-import io.reactivex.Completable;
+import io.reactivex.Flowable;
 import io.reactivex.Maybe;
 
 @Dao
 public interface EmployeeDao {
 
     @Query("SELECT * FROM employee")
-    List<Employee> getAll();
+    Flowable<List<Employee>> getAll();
 
     @Query("SELECT * FROM employee WHERE id = :employeeId")
     Maybe<Employee> getById(Long employeeId);
 
     @Query("SELECT * FROM employee WHERE login = :login AND password = :password")
     Maybe<Employee> getByLoginAndPassword(String login, String password);
+
+    @Query("SELECT * FROM employee WHERE login = :login")
+    Maybe<Employee> getByLogin(String login);
 
     @Insert
     void insert(Employee employee);

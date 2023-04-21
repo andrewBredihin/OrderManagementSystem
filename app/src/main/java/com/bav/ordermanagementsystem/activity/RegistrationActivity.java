@@ -2,48 +2,36 @@ package com.bav.ordermanagementsystem.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bav.ordermanagementsystem.R;
+import com.bav.ordermanagementsystem.db.DatabaseClient;
 import com.bav.ordermanagementsystem.entity.Client;
-import com.bav.ordermanagementsystem.service.UserService;
+import com.bav.ordermanagementsystem.entity.Employee;
+import com.bav.ordermanagementsystem.fragment.RegistrationFragment;
 
-import io.reactivex.disposables.Disposable;
+import io.reactivex.Completable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.observers.DisposableCompletableObserver;
+import io.reactivex.observers.DisposableMaybeObserver;
+import io.reactivex.schedulers.Schedulers;
 
-public class RegistrationActivity extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity{
 
-    private EditText login, password, confirmPassword, firstName, lastName, secondName, email, phone;
     private Button btnRegistration;
     private ImageButton btnBack;
-    private TextView error;
 
-    private UserService userService;
+    private DatabaseClient databaseClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-        userService = UserService.getInstance(getApplicationContext());
-
-        login = findViewById(R.id.editTextLoginRegistrationPage);
-        password = findViewById(R.id.editTextPasswordRegistrationPage);
-        confirmPassword = findViewById(R.id.editTextConfirmPasswordRegistrationPage);
-        firstName = findViewById(R.id.editTextFirstNameRegistrationPage);
-        lastName = findViewById(R.id.editTextLastNameRegistrationPage);
-        secondName = findViewById(R.id.editTextSecondNameRegistrationPage);
-        email = findViewById(R.id.editTextEmailRegistrationPage);
-        phone = findViewById(R.id.editTextPhoneRegistrationPage);
-
-        error = findViewById(R.id.textViewErrorRegistrationPage);
+        databaseClient = DatabaseClient.getInstance(getApplicationContext());
 
         btnRegistration = findViewById(R.id.buttonRefistrationRegistrationPage);
         btnBack = findViewById(R.id.buttonBackRegistrationPage);
@@ -53,28 +41,61 @@ public class RegistrationActivity extends AppCompatActivity {
         });
 
         btnRegistration.setOnClickListener(v -> {
-            //Добавить валидацию полей
-            /*if (){
-                error.setText(R.string.errorRegistrationPage);
-                error.setVisibility(View.VISIBLE);
-            }*/
-            if (!password.getText().toString().equals(confirmPassword.getText().toString())){
-                error.setText(R.string.errorPasswordRegistrationPage);
-                error.setVisibility(View.VISIBLE);
-            }
-            else {
-                Client client = new Client();
-                client.setFirstName(firstName.getText().toString());
-                client.setLastName(lastName.getText().toString());
-                client.setEmail(email.getText().toString());
-                client.setPhone(Long.valueOf(phone.getText().toString()));
-                client.setLogin(login.getText().toString());
-                client.setPassword(password.getText().toString());
+            RegistrationFragment fragment = (RegistrationFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container_view_registration);
+            Client client = fragment.getClient();
+            if (client != null){
+                databaseClient.getAppDatabase().clientDao().getByLogin(client.getLogin())
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new DisposableMaybeObserver<Client>() {
+                            @Override
+                            public void onSuccess(Client client) {
+                                Toast.makeText(getApplicationContext(), R.string.errorLoginAlreadyUsingRegistrationPage, Toast.LENGTH_LONG).show();
+                            }
 
-                if (userService.saveUser(client)){
-                    Intent intent = new Intent(getApplication(), LoginActivity.class);
-                    startActivity(intent);
-                }
+                            @Override
+                            public void onError(Throwable e) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+                                databaseClient.getAppDatabase().employeeDao().getByLogin(client.getLogin())
+                                        .subscribeOn(Schedulers.io())
+                                        .observeOn(AndroidSchedulers.mainThread())
+                                        .subscribe(new DisposableMaybeObserver<Employee>() {
+                                            @Override
+                                            public void onSuccess(Employee employee) {
+                                                Toast.makeText(getApplicationContext(), R.string.errorLoginAlreadyUsingRegistrationPage, Toast.LENGTH_LONG).show();
+                                            }
+
+                                            @Override
+                                            public void onError(Throwable e) {
+
+                                            }
+
+                                            @Override
+                                            public void onComplete() {
+                                                Completable.fromAction(() -> DatabaseClient.getInstance(getApplicationContext()).getAppDatabase().clientDao().insert(client))
+                                                        .subscribeOn(Schedulers.io())
+                                                        .observeOn(AndroidSchedulers.mainThread())
+                                                        .subscribe(new DisposableCompletableObserver() {
+                                                            @Override
+                                                            public void onComplete() {
+                                                                Toast.makeText(getApplicationContext(), R.string.savedSuccessfullyRegistrationPage, Toast.LENGTH_SHORT).show();
+                                                                Intent intent = new Intent(getApplication(), LoginActivity.class);
+                                                                startActivity(intent);
+                                                            }
+
+                                                            @Override
+                                                            public void onError(Throwable e) {
+                                                                Toast.makeText(getApplicationContext(), R.string.errorSaveRegistrationPage, Toast.LENGTH_LONG).show();
+                                                            }
+                                                        });
+                                            }
+                                        });
+                            }
+                        });
             }
         });
     }
