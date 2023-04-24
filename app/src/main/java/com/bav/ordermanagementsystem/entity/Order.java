@@ -11,8 +11,7 @@ import java.util.List;
 
 @Entity(tableName = "order", foreignKeys = {
         @ForeignKey(entity = Employee.class, parentColumns = "id", childColumns = "employee_id"),
-        @ForeignKey(entity = Client.class, parentColumns = "id", childColumns = "client_id"),
-        @ForeignKey(entity = OrderStatus.class, parentColumns = "id", childColumns = "status_id")
+        @ForeignKey(entity = Client.class, parentColumns = "id", childColumns = "client_id")
 })
 public class Order {
 
@@ -26,7 +25,7 @@ public class Order {
     private Long client_id;
 
     @ColumnInfo(index = true)
-    private Long status_id;
+    private String status;
 
     @Ignore
     private List<OrderItem> items;
@@ -70,12 +69,12 @@ public class Order {
         this.client_id = client_id;
     }
 
-    public Long getStatus_id() {
-        return status_id;
+    public String getStatus() {
+        return status;
     }
 
-    public void setStatus_id(Long status_id) {
-        this.status_id = status_id;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public double getPrice() {

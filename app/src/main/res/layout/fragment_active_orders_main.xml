@@ -5,31 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activeOrdersList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragment_container_view_active_orders_header"
-            android:name="com.bav.ordermanagementsystem.fragment.ActiveOrdersHeaderFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"></androidx.fragment.app.FragmentContainerView>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/activeOrdersList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-    </LinearLayout>
+    </androidx.recyclerview.widget.RecyclerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

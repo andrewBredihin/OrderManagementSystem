@@ -23,11 +23,11 @@ public interface OrderDao {
     @Query("SELECT * FROM `order` WHERE employee_id = :employeeId")
     LiveData<List<Order>> getByEmployeeId(Long employeeId);
 
-    @Query("SELECT * FROM `order` WHERE status_id = :statusId")
-    LiveData<List<Order>> getByStatusId(Long statusId);
+    @Query("SELECT * FROM `order` WHERE status = :status")
+    LiveData<List<Order>> getByStatusId(String status);
 
-    @Query("SELECT * FROM `order` WHERE employee_id = :employeeId AND status_id = :statusId")
-    LiveData<List<Order>> getByEmployeeIdAndStatusId(Long employeeId, Long statusId);
+    @Query("SELECT * FROM `order` WHERE employee_id = :employeeId AND status = :status")
+    LiveData<List<Order>> getByEmployeeIdAndStatusId(Long employeeId, String status);
 
 
     @Insert

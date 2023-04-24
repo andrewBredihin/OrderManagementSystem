@@ -1,4 +1,4 @@
-package com.bav.ordermanagementsystem.adapter;
+package com.bav.ordermanagementsystem.adapter.activeOrders;
 
 import android.view.View;
 import android.widget.Button;
@@ -7,9 +7,10 @@ import android.widget.ImageButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bav.ordermanagementsystem.R;
+import com.bav.ordermanagementsystem.adapter.RecyclerViewHolderInterface;
 import com.bav.ordermanagementsystem.entity.Order;
 
-public class ActiveOrdersViewHolder extends RecyclerView.ViewHolder implements RecyclerViewHolderInterface{
+public class ActiveOrdersViewHolder extends RecyclerView.ViewHolder implements RecyclerViewHolderInterface {
     final Button itemTitle;
     final ImageButton backButton, completeButton;
 

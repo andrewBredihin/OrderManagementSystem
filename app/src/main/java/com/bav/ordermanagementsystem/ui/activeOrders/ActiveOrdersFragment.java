@@ -1,4 +1,4 @@
-package com.bav.ordermanagementsystem.fragment;
+package com.bav.ordermanagementsystem.ui.activeOrders;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,9 +10,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bav.ordermanagementsystem.R;
-import com.bav.ordermanagementsystem.adapter.ActiveOrdersAdapter;
+import com.bav.ordermanagementsystem.adapter.activeOrders.ActiveOrdersAdapter;
 import com.bav.ordermanagementsystem.db.DatabaseClient;
 import com.bav.ordermanagementsystem.entity.Order;
+import com.bav.ordermanagementsystem.entity.OrderStatus;
 import com.bav.ordermanagementsystem.service.UserService;
 
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class ActiveOrdersFragment extends Fragment {
         @Override
         protected List<Order> doInBackground(Void... voids) {
             Long employeeId = UserService.getInstance(getContext()).getUserDetails().getId();
-            return DatabaseClient.getInstance(getContext()).getAppDatabase().orderDao().getByEmployeeIdAndStatusId(employeeId, 0l).getValue();
+            return DatabaseClient.getInstance(getContext()).getAppDatabase().orderDao().getByEmployeeIdAndStatusId(employeeId, OrderStatus.ACTIVE).getValue();
         }
 
         @Override

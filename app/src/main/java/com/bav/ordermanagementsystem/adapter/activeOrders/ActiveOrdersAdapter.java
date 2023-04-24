@@ -1,4 +1,4 @@
-package com.bav.ordermanagementsystem.adapter;
+package com.bav.ordermanagementsystem.adapter.activeOrders;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bav.ordermanagementsystem.entity.Order;
-import com.bav.ordermanagementsystem.entity.OrderItem;
 
 import java.util.List;
 

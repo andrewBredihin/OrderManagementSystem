@@ -12,7 +12,7 @@ import com.bav.ordermanagementsystem.R;
 import com.bav.ordermanagementsystem.db.DatabaseClient;
 import com.bav.ordermanagementsystem.entity.Client;
 import com.bav.ordermanagementsystem.entity.Employee;
-import com.bav.ordermanagementsystem.fragment.RegistrationFragment;
+import com.bav.ordermanagementsystem.ui.registration.RegistrationFragment;
 
 import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -41,7 +41,7 @@ public class RegistrationActivity extends AppCompatActivity{
         });
 
         btnRegistration.setOnClickListener(v -> {
-            RegistrationFragment fragment = (RegistrationFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container_view_registration);
+            RegistrationFragment fragment = (RegistrationFragment) getSupportFragmentManager().findFragmentById(R.id.registration_fragment);
             Client client = fragment.getClient();
             if (client != null){
                 databaseClient.getAppDatabase().clientDao().getByLogin(client.getLogin())
@@ -76,7 +76,7 @@ public class RegistrationActivity extends AppCompatActivity{
 
                                             @Override
                                             public void onComplete() {
-                                                Completable.fromAction(() -> DatabaseClient.getInstance(getApplicationContext()).getAppDatabase().clientDao().insert(client))
+                                                Completable.fromAction(() -> databaseClient.getAppDatabase().clientDao().insert(client))
                                                         .subscribeOn(Schedulers.io())
                                                         .observeOn(AndroidSchedulers.mainThread())
                                                         .subscribe(new DisposableCompletableObserver() {

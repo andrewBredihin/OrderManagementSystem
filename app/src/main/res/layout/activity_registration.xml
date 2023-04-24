@@ -18,73 +18,56 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.8"
-            android:orientation="horizontal">
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
             <ImageButton
                 android:id="@+id/buttonBackRegistrationPage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_margin="5dp"
                 app:srcCompat="@android:drawable/ic_menu_revert"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_margin="5dp"
                 android:text="@string/registration"
-                android:textSize="28dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/buttonBackRegistrationPage"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:textSize="28sp" />
+        </LinearLayout>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.2"
+            android:layout_weight="0.3"
             android:padding="5dp"
             android:scrollbars="none">
             <ScrollView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <androidx.fragment.app.FragmentContainerView
-                    android:id="@+id/fragment_container_view_registration"
+                <fragment
+                    android:id="@+id/registration_fragment"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:name="com.bav.ordermanagementsystem.fragment.RegistrationFragment"></androidx.fragment.app.FragmentContainerView>
+                    android:layout_height="wrap_content"
+                    android:name="com.bav.ordermanagementsystem.ui.registration.RegistrationFragment"/>
             </ScrollView>
         </ScrollView>
 
-        <LinearLayout
+        <Button
+            android:id="@+id/buttonRefistrationRegistrationPage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            android:orientation="vertical">
+            android:layout_margin="10dp"
+            android:minHeight="48dp"
+            android:text="@string/registrationButtonText"
+            android:layout_weight="1"/>
 
-            <Button
-                android:id="@+id/buttonRefistrationRegistrationPage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:minHeight="48dp"
-                android:text="@string/registrationButtonText" />
-        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

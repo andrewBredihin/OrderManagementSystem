@@ -1,4 +1,4 @@
-package com.bav.ordermanagementsystem.fragment;
+package com.bav.ordermanagementsystem.ui.registration;
 
 import android.os.Bundle;
 import android.view.View;

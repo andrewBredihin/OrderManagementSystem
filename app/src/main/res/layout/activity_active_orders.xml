@@ -12,7 +12,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:name="com.bav.ordermanagementsystem.fragment.ActiveOrdersFragment">
+        android:name="com.bav.ordermanagementsystem.ui.activeOrders.ActiveOrdersFragment">
 
     </androidx.fragment.app.FragmentContainerView>
 </androidx.constraintlayout.widget.ConstraintLayout>
