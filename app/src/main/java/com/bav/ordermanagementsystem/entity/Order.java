@@ -24,7 +24,7 @@ public class Order {
     @ColumnInfo(index = true)
     private Long client_id;
 
-    @ColumnInfo(index = true)
+    @ColumnInfo
     private String status;
 
     @Ignore

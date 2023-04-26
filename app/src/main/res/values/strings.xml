@@ -23,9 +23,9 @@
     <string name="registration_password">Пароль</string>
     <string name="registration_confirm_password">Подтвердить пароль</string>
 
-    <string name="errorFirstNameRegistrationPage">Имя не должно быть короче 1 символов</string>
-    <string name="errorLastNameRegistrationPage">Фамилия не должна быть короче 1 символов</string>
-    <string name="errorSecondNameRegistrationPage">Отчество не должно быть короче 1 символов</string>
+    <string name="errorFirstNameRegistrationPage">Имя не должно быть короче 1 символа</string>
+    <string name="errorLastNameRegistrationPage">Фамилия не должна быть короче 1 символа</string>
+    <string name="errorSecondNameRegistrationPage">Отчество не должно быть короче 1 символа</string>
     <string name="errorMailRegistrationPage">Неверный формат email</string>
     <string name="errorLoginRegistrationPage">Логин не должен быть короче 6 символов</string>
     <string name="errorPasswordRegistrationPage">Пароль не должен быть короче 6 символов</string>
@@ -35,15 +35,21 @@
     <string name="errorLoginAlreadyUsingRegistrationPage">Введенный логин уже используется</string>
     <string name="savedSuccessfullyRegistrationPage">Пользователь зарегистрирован</string>
 
-    <string name="createOrderButtonCreateOrderPage">Создать заказ</string>
+    <string name="createOrderButton">Создать заказ</string>
     <string name="address">Адрес</string>
     <string name="title">Название</string>
     <string name="orderCreated">Заказ создан</string>
+    <string name="orderCanceled">Заказ отменен</string>
     <string name="orderNotCreated">Ошибка при создании заказа</string>
+    <string name="orderItemWasNotSelected">Услуга не выбрана</string>
+    <string name="errorCreateOrderTitle">Название не должно быть короче 10 символов</string>
+    <string name="errorCreateOrderAddress">Адрес не должен быть короче 10 символов</string>
 
     <string name="active_orders">Активные заказы</string>
     <string name="create_order">Создание заказа</string>
     <string name="my_orders">Мои заказа</string>
+
+    <string name="orderInExecution">Невозможно отменить: заказ выполняется</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>

@@ -1,17 +1,15 @@
 package com.bav.ordermanagementsystem.activity;
 
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
 import android.view.Menu;
 
 import com.bav.ordermanagementsystem.R;
 import com.bav.ordermanagementsystem.entity.Client;
+import com.bav.ordermanagementsystem.entity.Employee;
+import com.bav.ordermanagementsystem.entity.UserRole;
 import com.bav.ordermanagementsystem.service.UserService;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -36,13 +34,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -51,17 +42,27 @@ public class MainActivity extends AppCompatActivity {
         if (userService.getUserDetails().getClass().equals(Client.class)) {
             navigationView.inflateMenu(R.menu.activity_main_drawer_client);
             navController.setGraph(R.navigation.mobile_navigation_client);
-        } else{
-            navigationView.inflateMenu(R.menu.activity_main_drawer);
-            navController.setGraph(R.navigation.mobile_navigation);
+            mAppBarConfiguration = new AppBarConfiguration.Builder(
+                    R.id.nav_my_orders, R.id.nav_create_order, R.id.nav_slideshow)
+                    .setOpenableLayout(drawer)
+                    .build();
+        } else if (userService.getUserDetails().getClass().equals(Employee.class)){
+            if (userService.getUserDetails().getRole().equals(UserRole.EMPLOYEE)){
+                navigationView.inflateMenu(R.menu.activity_main_drawer_employee);
+                navController.setGraph(R.navigation.mobile_navigation_employee);
+                mAppBarConfiguration = new AppBarConfiguration.Builder(
+                        R.id.nav_active_orders, R.id.nav_gallery, R.id.nav_slideshow)
+                        .setOpenableLayout(drawer)
+                        .build();
+            }
+            else if(userService.getUserDetails().getRole().equals(UserRole.MANAGER)){
+                //дописать отображение для менеджера
+            }
         }
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_active_orders, R.id.nav_create_order, R.id.nav_slideshow)
-                .setOpenableLayout(drawer)
-                .build();
+
 
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);

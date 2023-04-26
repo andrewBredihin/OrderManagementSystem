@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.bav.ordermanagementsystem.R;
 import com.bav.ordermanagementsystem.activity.LoginActivity;
@@ -20,6 +21,7 @@ import com.bav.ordermanagementsystem.entity.Order;
 import com.bav.ordermanagementsystem.entity.OrderItem;
 import com.bav.ordermanagementsystem.entity.OrderStatus;
 import com.bav.ordermanagementsystem.service.UserService;
+import com.bav.ordermanagementsystem.ui.myOrders.MyOrdersFragment;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.DateFormat;
@@ -57,9 +59,21 @@ public class CreateOrderFragment extends Fragment {
 
         createOrder = binding.buttonCreateOrder;
         createOrder.setOnClickListener(v -> {
+            if (title.getText().toString().length() < 10){
+                Toast.makeText(getContext(), R.string.errorCreateOrderTitle, Toast.LENGTH_SHORT).show();
+                return;
+            }
+            else if (address.getText().toString().length() < 10){
+                Toast.makeText(getContext(), R.string.errorCreateOrderAddress, Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             List<OrderItem> items = new ArrayList<>();
             //Дописать получение items
+            /*if (items.size() == 0){
+                Toast.makeText(getContext(), R.string.orderItemWasNotSelected, Toast.LENGTH_SHORT).show();
+                return;
+            }*/
             double price = 0;
             for (OrderItem x : items){
                 price += x.getPrice();
@@ -85,7 +99,7 @@ public class CreateOrderFragment extends Fragment {
                         @Override
                         public void onComplete() {
                             Toast.makeText(getContext(), R.string.orderCreated, Toast.LENGTH_SHORT).show();
-                            //переход на страниу заказов клиента
+                            Navigation.findNavController(container).navigate(R.id.nav_my_orders);
                         }
 
                         @Override

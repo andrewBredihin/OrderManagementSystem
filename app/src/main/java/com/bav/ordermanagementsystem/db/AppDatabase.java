@@ -12,7 +12,7 @@ import com.bav.ordermanagementsystem.entity.Order;
 
 @Database(entities = {Employee.class,
         Client.class,
-        Order.class}, version = 1)
+        Order.class}, version = 2)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract EmployeeDao employeeDao();
     public abstract ClientDao clientDao();

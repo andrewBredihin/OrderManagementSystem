@@ -54,13 +54,13 @@
             tools:layout="@layout/fragment_create_order_get_items"/>
 
         <Button
-            android:layout_weight="1"
             android:id="@+id/buttonCreateOrder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
+            android:layout_weight="1"
             android:minHeight="48dp"
-            android:text="@string/createOrderButtonCreateOrderPage" />
+            android:text="@string/createOrderButton" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
