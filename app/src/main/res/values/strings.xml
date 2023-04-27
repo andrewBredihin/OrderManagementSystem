@@ -40,12 +40,14 @@
     <string name="title">Название</string>
     <string name="orderCreated">Заказ создан</string>
     <string name="orderCanceled">Заказ отменен</string>
+    <string name="orderStartActive">Заказ принят</string>
     <string name="orderNotCreated">Ошибка при создании заказа</string>
     <string name="orderItemWasNotSelected">Услуга не выбрана</string>
     <string name="errorCreateOrderTitle">Название не должно быть короче 10 символов</string>
     <string name="errorCreateOrderAddress">Адрес не должен быть короче 10 символов</string>
 
     <string name="active_orders">Активные заказы</string>
+    <string name="pending_orders">Доступные заказы</string>
     <string name="create_order">Создание заказа</string>
     <string name="my_orders">Мои заказа</string>
 
@@ -54,4 +56,6 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+
+    <string name="logout">Выйти</string>
 </resources>

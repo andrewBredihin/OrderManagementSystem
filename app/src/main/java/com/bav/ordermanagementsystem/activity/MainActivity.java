@@ -1,7 +1,10 @@
 package com.bav.ordermanagementsystem.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import com.bav.ordermanagementsystem.R;
 import com.bav.ordermanagementsystem.entity.Client;
@@ -51,12 +54,13 @@ public class MainActivity extends AppCompatActivity {
                 navigationView.inflateMenu(R.menu.activity_main_drawer_employee);
                 navController.setGraph(R.navigation.mobile_navigation_employee);
                 mAppBarConfiguration = new AppBarConfiguration.Builder(
-                        R.id.nav_active_orders, R.id.nav_gallery, R.id.nav_slideshow)
+                        R.id.nav_active_orders, R.id.nav_pending_orders, R.id.nav_slideshow)
                         .setOpenableLayout(drawer)
                         .build();
             }
             else if(userService.getUserDetails().getRole().equals(UserRole.MANAGER)){
                 //дописать отображение для менеджера
+
             }
         }
 
@@ -72,6 +76,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        menu.findItem(R.id.action_logout).setOnMenuItemClickListener(item -> {
+            userService.setUserDetails(null);
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+            return true;
+        });
         return true;
     }
 
