@@ -18,6 +18,9 @@ public interface OrderDao {
     @Query("SELECT * FROM `order`")
     Flowable<List<Order>> getAll();
 
+    @Query("SELECT * FROM `order` WHERE id = :id")
+    Flowable<Order> getById(Long id);
+
     @Query("SELECT * FROM `order` WHERE client_id = :clientId")
     Flowable<List<Order>> getByClientId(Long clientId);
 

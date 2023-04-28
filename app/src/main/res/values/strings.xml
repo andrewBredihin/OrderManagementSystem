@@ -40,6 +40,7 @@
     <string name="title">Название</string>
     <string name="orderCreated">Заказ создан</string>
     <string name="orderCanceled">Заказ отменен</string>
+    <string name="orderToCanceled">Отменить заказ</string>
     <string name="orderStartActive">Заказ принят</string>
     <string name="orderNotCreated">Ошибка при создании заказа</string>
     <string name="orderItemWasNotSelected">Услуга не выбрана</string>
@@ -49,7 +50,7 @@
     <string name="active_orders">Активные заказы</string>
     <string name="pending_orders">Доступные заказы</string>
     <string name="create_order">Создание заказа</string>
-    <string name="my_orders">Мои заказа</string>
+    <string name="my_orders">Мои заказы</string>
 
     <string name="orderInExecution">Невозможно отменить: заказ выполняется</string>
 

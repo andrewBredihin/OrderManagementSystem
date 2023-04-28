@@ -1,10 +1,12 @@
 package com.bav.ordermanagementsystem.adapter.myOrders;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bav.ordermanagementsystem.R;
@@ -33,6 +35,15 @@ public class MyOrdersViewHolder extends RecyclerView.ViewHolder implements Recyc
     @Override
     public void setOrder(Order item) {
         itemTitle.setText(item.getTitle());
+        itemTitle.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putLong("orderId", item.getId());
+            if (item.getEmployee_id() != null)
+                bundle.putLong("employeeId", item.getEmployee_id());
+            else
+                bundle.putLong("employeeId", 0);
+            Navigation.findNavController(view).navigate(R.id.nav_order_info, bundle);
+        });
         deleteButton.setOnClickListener(v -> {
             if (item.getStatus().equals(OrderStatus.PENDING)){
                 Completable.fromAction(() -> DatabaseClient.getInstance(view.getContext()).getAppDatabase().orderDao().delete(item))

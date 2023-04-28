@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="order"
+            type="com.bav.ordermanagementsystem.entity.Order"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/order_info_address"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:layout_margin="10dp"
+            android:textSize="24sp"
+            android:minHeight="28dp"
+            android:text="@{order.address}" />
+
+        <TextView
+            android:id="@+id/order_info_status"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="0.5"
+            android:textSize="24sp"
+            android:minHeight="28dp"
+            android:text="@{order.status}" />
+
+        <ViewStub
+            android:id="@+id/order_info_employee"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="0.5"
+            android:layout="@layout/order_address_textview"/>
+
+
+        <fragment
+            android:id="@+id/order_info_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:layout_margin="10dp"
+            android:name="com.bav.ordermanagementsystem.ui.createOrder.CreateOrderGetItemsFragment"
+            tools:layout="@layout/fragment_create_order_get_items"/>
+
+        <Button
+            android:id="@+id/order_info_canceled"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:layout_margin="10dp"
+            android:minHeight="48dp"
+            android:text="@string/orderToCanceled" />
+
+
+    </LinearLayout>
+</layout>

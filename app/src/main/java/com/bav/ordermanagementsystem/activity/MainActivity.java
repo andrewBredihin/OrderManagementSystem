@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             navigationView.inflateMenu(R.menu.activity_main_drawer_client);
             navController.setGraph(R.navigation.mobile_navigation_client);
             mAppBarConfiguration = new AppBarConfiguration.Builder(
-                    R.id.nav_my_orders, R.id.nav_create_order, R.id.nav_slideshow)
+                    R.id.nav_my_orders, R.id.nav_create_order, R.id.nav_slideshow, R.id.nav_order_info)
                     .setOpenableLayout(drawer)
                     .build();
         } else if (userService.getUserDetails().getClass().equals(Employee.class)){

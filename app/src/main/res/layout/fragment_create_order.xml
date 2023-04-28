@@ -46,7 +46,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <fragment
-            android:id="@+id/order_info_fragment"
+            android:id="@+id/create_order_info_fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.4"
