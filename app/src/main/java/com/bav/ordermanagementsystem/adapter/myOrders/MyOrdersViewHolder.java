@@ -42,27 +42,31 @@ public class MyOrdersViewHolder extends RecyclerView.ViewHolder implements Recyc
                 bundle.putLong("employeeId", item.getEmployee_id());
             else
                 bundle.putLong("employeeId", 0);
-            Navigation.findNavController(view).navigate(R.id.nav_order_info, bundle);
+            Navigation.findNavController(view).navigate(R.id.nav_order_info_client, bundle);
         });
-        deleteButton.setOnClickListener(v -> {
-            if (item.getStatus().equals(OrderStatus.PENDING)){
-                Completable.fromAction(() -> DatabaseClient.getInstance(view.getContext()).getAppDatabase().orderDao().delete(item))
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new DisposableCompletableObserver() {
-                            @Override
-                            public void onComplete() {
-                                Toast.makeText(view.getContext(), R.string.orderCanceled, Toast.LENGTH_SHORT).show();
-                            }
+        if (item.getStatus().equals(OrderStatus.PENDING)){
+            deleteButton.setOnClickListener(v -> {
+                if (!item.getStatus().equals(OrderStatus.ACTIVE)){
+                    Completable.fromAction(() -> DatabaseClient.getInstance(view.getContext()).getAppDatabase().orderDao().delete(item))
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(new DisposableCompletableObserver() {
+                                @Override
+                                public void onComplete() {
+                                    Toast.makeText(view.getContext(), R.string.orderCanceled, Toast.LENGTH_SHORT).show();
+                                }
 
-                            @Override
-                            public void onError(Throwable e) {
+                                @Override
+                                public void onError(Throwable e) {
 
-                            }
-                        });
-            } else {
-                Toast.makeText(view.getContext(), R.string.orderInExecution, Toast.LENGTH_SHORT).show();
-            }
-        });
+                                }
+                            });
+                } else {
+                    Toast.makeText(view.getContext(), R.string.orderInExecution, Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            deleteButton.setVisibility(View.INVISIBLE);
+        }
     }
 }

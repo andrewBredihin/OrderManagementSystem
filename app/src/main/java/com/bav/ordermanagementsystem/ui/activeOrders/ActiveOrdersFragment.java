@@ -47,8 +47,7 @@ public class ActiveOrdersFragment extends Fragment {
         DatabaseClient.getInstance(context).getAppDatabase().orderDao().getByStatusId(OrderStatus.ACTIVE)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(orders -> {
-                    ActiveOrdersAdapter adapter;
-                    adapter = new ActiveOrdersAdapter(context, orders, R.layout.fragment_active_orders_order);
+                    ActiveOrdersAdapter adapter = new ActiveOrdersAdapter(context, orders, R.layout.fragment_active_orders_order);
                     recyclerView.setAdapter(adapter);
                 });
         return root;

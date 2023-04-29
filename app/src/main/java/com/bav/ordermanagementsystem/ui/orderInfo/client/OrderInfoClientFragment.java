@@ -21,13 +21,16 @@ import androidx.navigation.Navigation;
 import com.bav.ordermanagementsystem.R;
 import com.bav.ordermanagementsystem.adapter.myOrders.MyOrdersAdapter;
 import com.bav.ordermanagementsystem.databinding.FragmentOrderInfoClientBinding;
-import com.bav.ordermanagementsystem.databinding.OrderAddressTextviewBinding;
+import com.bav.ordermanagementsystem.databinding.OrderEmployeeTextviewBinding;
 import com.bav.ordermanagementsystem.db.DatabaseClient;
 import com.bav.ordermanagementsystem.entity.Employee;
 import com.bav.ordermanagementsystem.entity.Order;
+import com.bav.ordermanagementsystem.entity.OrderStatus;
 import com.bav.ordermanagementsystem.service.UserService;
 
+import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.observers.DisposableMaybeObserver;
 import io.reactivex.schedulers.Schedulers;
 
@@ -35,7 +38,6 @@ public class OrderInfoClientFragment extends Fragment {
 
     private FragmentOrderInfoClientBinding binding;
     private UserService userService;
-    private Context context;
 
     private Button canceledOrder;
 
@@ -45,7 +47,7 @@ public class OrderInfoClientFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentOrderInfoClientBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        this.context = getContext();
+        Context context = getContext();
         userService = UserService.getInstance(context);
         canceledOrder = binding.orderInfoCanceled;
 
@@ -53,7 +55,27 @@ public class OrderInfoClientFragment extends Fragment {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(order -> {
                     binding.setOrder(order);
-                    ((AppCompatActivity) requireActivity()).getSupportActionBar().setTitle(order.getTitle());
+                    canceledOrder.setOnClickListener(v -> {
+                        if (!order.getStatus().equals(OrderStatus.ACTIVE)){
+                            Completable.fromAction(() -> DatabaseClient.getInstance(context).getAppDatabase().orderDao().delete(order))
+                                    .subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe(new DisposableCompletableObserver() {
+                                        @Override
+                                        public void onComplete() {
+                                            Toast.makeText(context, R.string.orderCanceled, Toast.LENGTH_SHORT).show();
+                                            Navigation.findNavController(container).navigate(R.id.nav_my_orders);
+                                        }
+
+                                        @Override
+                                        public void onError(Throwable e) {
+
+                                        }
+                                    });
+                        } else {
+                            Toast.makeText(context, R.string.orderInExecution, Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 });
 
 
@@ -65,12 +87,9 @@ public class OrderInfoClientFragment extends Fragment {
                     .subscribe(new DisposableMaybeObserver<Employee>() {
                         @Override
                         public void onSuccess(Employee employee) {
-                            binding.orderInfoEmployee.setOnInflateListener(new ViewStub.OnInflateListener() {
-                                @Override
-                                public void onInflate(ViewStub viewStub, View view) {
-                                    OrderAddressTextviewBinding binding = DataBindingUtil.bind(view);
-                                    binding.setEmployee(employee);
-                                }
+                            binding.orderInfoEmployee.setOnInflateListener((viewStub, view) -> {
+                                OrderEmployeeTextviewBinding binding = DataBindingUtil.bind(view);
+                                binding.setEmployee(employee);
                             });
                             if (!binding.orderInfoEmployee.isInflated()) {
                                 binding.orderInfoEmployee.getViewStub().inflate();

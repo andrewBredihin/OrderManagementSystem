@@ -1,10 +1,12 @@
 package com.bav.ordermanagementsystem.adapter.pendingOrders;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bav.ordermanagementsystem.R;
@@ -34,6 +36,12 @@ public class PendingOrdersViewHolder extends RecyclerView.ViewHolder implements 
     @Override
     public void setOrder(Order item) {
         itemTitle.setText(item.getTitle());
+        itemTitle.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putLong("orderId", item.getId());
+            Navigation.findNavController(view).navigate(R.id.nav_order_info_employee, bundle);
+        });
+
         toActiveButton.setOnClickListener(v -> {
             item.setStatus(OrderStatus.ACTIVE);
             item.setEmployee_id(UserService.getInstance(view.getContext()).getUserDetails().getId());

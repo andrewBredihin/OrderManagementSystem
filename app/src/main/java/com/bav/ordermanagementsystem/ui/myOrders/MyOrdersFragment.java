@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewStub;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewStubProxy;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.Navigation;
@@ -20,6 +23,7 @@ import com.bav.ordermanagementsystem.R;
 import com.bav.ordermanagementsystem.activity.MainActivity;
 import com.bav.ordermanagementsystem.adapter.myOrders.MyOrdersAdapter;
 import com.bav.ordermanagementsystem.databinding.FragmentMyOrdersBinding;
+import com.bav.ordermanagementsystem.databinding.OrderEmployeeTextviewBinding;
 import com.bav.ordermanagementsystem.db.DatabaseClient;
 import com.bav.ordermanagementsystem.entity.Order;
 import com.bav.ordermanagementsystem.entity.OrderStatus;
@@ -30,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
 
 public class MyOrdersFragment extends Fragment {
 
@@ -48,20 +53,24 @@ public class MyOrdersFragment extends Fragment {
 
         userService = UserService.getInstance(context);
 
-        RecyclerView recyclerView = binding.recyclerViewMyOrders;
-
-        DatabaseClient.getInstance(context).getAppDatabase().orderDao().getByClientId(userService.getUserDetails().getId())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(orders -> {
-                    MyOrdersAdapter adapter;
-                    adapter = new MyOrdersAdapter(context, orders, R.layout.fragment_my_order);
-                    recyclerView.setAdapter(adapter);
-                });
-
         createOrder = binding.buttonCreateOrders;
         createOrder.setOnClickListener(v -> {
             Navigation.findNavController(container).navigate(R.id.nav_create_order);
         });
+
+        DatabaseClient.getInstance(context).getAppDatabase().orderDao().getByClientIdAndStatus(userService.getUserDetails().getId(), OrderStatus.ACTIVE)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(activeOrders -> {
+                    DatabaseClient.getInstance(context).getAppDatabase().orderDao().getByClientIdAndStatus(userService.getUserDetails().getId(), OrderStatus.PENDING)
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(pendingOrders -> {
+                                activeOrders.addAll(pendingOrders);
+                                MyOrdersAdapter adapter = new MyOrdersAdapter(context, activeOrders, R.layout.fragment_my_order);
+                                binding.ordersList.setAdapter(adapter);
+                            });
+                });
+
+
 
         return root;
     }

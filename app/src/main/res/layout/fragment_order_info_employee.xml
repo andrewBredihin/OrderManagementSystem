@@ -9,7 +9,8 @@
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/order_info_address"
@@ -18,6 +19,7 @@
             android:minHeight="28dp"
             android:text="@{order.address}"
             android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/order_info_status"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -33,37 +35,37 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/order_info_address" />
 
-        <ViewStub
-            android:id="@+id/order_info_employee"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout="@layout/order_employee_textview"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/order_info_status" />
-
 
         <fragment
             android:id="@+id/order_info_fragment"
             android:name="com.bav.ordermanagementsystem.ui.createOrder.CreateOrderGetItemsFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/order_info_canceled"
+            app:layout_constraintBottom_toTopOf="@+id/frameLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/order_info_employee"
+            app:layout_constraintTop_toBottomOf="@+id/order_info_status"
             tools:layout="@layout/fragment_create_order_get_items" />
 
-        <Button
-            android:id="@+id/order_info_canceled"
+        <FrameLayout
+            android:id="@+id/frameLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:text="@string/orderToCanceled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent">
 
+            <ViewStub
+                android:id="@+id/order_info_order_pending"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout="@layout/order_info_pending" />
 
+            <ViewStub
+                android:id="@+id/order_info_order_active"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout="@layout/order_info_active" />
+        </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

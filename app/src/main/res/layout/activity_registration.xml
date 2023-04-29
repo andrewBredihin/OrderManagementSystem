@@ -48,15 +48,11 @@
             android:layout_weight="0.3"
             android:padding="5dp"
             android:scrollbars="none">
-            <ScrollView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <fragment
-                    android:id="@+id/registration_fragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:name="com.bav.ordermanagementsystem.ui.registration.RegistrationFragment"/>
-            </ScrollView>
+            <fragment
+                android:id="@+id/registration_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:name="com.bav.ordermanagementsystem.ui.registration.RegistrationFragment"/>
         </ScrollView>
 
         <Button

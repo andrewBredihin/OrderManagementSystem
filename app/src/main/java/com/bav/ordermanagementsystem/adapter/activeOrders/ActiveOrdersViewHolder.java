@@ -1,10 +1,12 @@
 package com.bav.ordermanagementsystem.adapter.activeOrders;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bav.ordermanagementsystem.R;
@@ -36,6 +38,11 @@ public class ActiveOrdersViewHolder extends RecyclerView.ViewHolder implements R
     @Override
     public void setOrder(Order item) {
         itemTitle.setText(item.getTitle());
+        itemTitle.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putLong("orderId", item.getId());
+            Navigation.findNavController(view).navigate(R.id.nav_order_info_employee, bundle);
+        });
 
         backButton.setOnClickListener(v -> {
             item.setStatus(OrderStatus.PENDING);
@@ -46,7 +53,7 @@ public class ActiveOrdersViewHolder extends RecyclerView.ViewHolder implements R
                     .subscribe(new DisposableCompletableObserver() {
                         @Override
                         public void onComplete() {
-                            Toast.makeText(view.getContext(), R.string.orderStartActive, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(view.getContext(), R.string.orderCanceled, Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
@@ -64,7 +71,7 @@ public class ActiveOrdersViewHolder extends RecyclerView.ViewHolder implements R
                     .subscribe(new DisposableCompletableObserver() {
                         @Override
                         public void onComplete() {
-                            Toast.makeText(view.getContext(), R.string.orderCanceled, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(view.getContext(), R.string.orderComplete, Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
