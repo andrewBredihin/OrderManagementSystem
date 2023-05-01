@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.bav.ordermanagementsystem.R;
 import com.bav.ordermanagementsystem.entity.Client;
@@ -70,6 +72,12 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        View header = navigationView.getHeaderView(0);
+        TextView name = header.findViewById(R.id.navHeaderFullName);
+        TextView addInfo = header.findViewById(R.id.navHeaderAddInfo);
+        name.setText(userService.getUserDetails().getFullName());
+        addInfo.setText(userService.getUserDetails().getAdditionalInformation());
     }
 
     @Override

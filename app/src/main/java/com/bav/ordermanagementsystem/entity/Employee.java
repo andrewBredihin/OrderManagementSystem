@@ -48,6 +48,16 @@ public class Employee implements UserDetails {
         return id;
     }
 
+    @Override
+    public String getFullName() {
+        return lastName + " " + firstName;
+    }
+
+    @Override
+    public String getAdditionalInformation() {
+        return role;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }

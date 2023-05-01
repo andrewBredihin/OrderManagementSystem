@@ -15,6 +15,12 @@ public class DatabaseClient {
     private static DatabaseClient mInstance;
     private AppDatabase appDatabase;
 
+    private final String host = "localhost";
+    private final String database = "androiddb";
+    private final int port = 5432;
+    private final String user = "postgres";
+    private final String pass = "1234565";
+
     private DatabaseClient(Context mCtx) {
         this.mCtx = mCtx;
         appDatabase = Room.databaseBuilder(mCtx, AppDatabase.class, "MyDatabase")

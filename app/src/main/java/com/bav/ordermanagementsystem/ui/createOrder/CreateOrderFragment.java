@@ -11,17 +11,21 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.bav.ordermanagementsystem.R;
 import com.bav.ordermanagementsystem.activity.LoginActivity;
 import com.bav.ordermanagementsystem.databinding.FragmentCreateOrderBinding;
+import com.bav.ordermanagementsystem.databinding.FragmentCreateOrderGetItemsBinding;
 import com.bav.ordermanagementsystem.db.DatabaseClient;
+import com.bav.ordermanagementsystem.entity.Client;
 import com.bav.ordermanagementsystem.entity.Order;
 import com.bav.ordermanagementsystem.entity.OrderItem;
 import com.bav.ordermanagementsystem.entity.OrderStatus;
 import com.bav.ordermanagementsystem.service.UserService;
 import com.bav.ordermanagementsystem.ui.myOrders.MyOrdersFragment;
+import com.bav.ordermanagementsystem.ui.registration.RegistrationFragment;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.DateFormat;
@@ -68,8 +72,8 @@ public class CreateOrderFragment extends Fragment {
                 return;
             }
 
-            List<OrderItem> items = new ArrayList<>();
-            //Дописать получение items
+            OrderGetItemsViewModel model = new ViewModelProvider(this).get(OrderGetItemsViewModel.class);
+            List<OrderItem> items = model.getItems();
             /*if (items.size() == 0){
                 Toast.makeText(getContext(), R.string.orderItemWasNotSelected, Toast.LENGTH_SHORT).show();
                 return;

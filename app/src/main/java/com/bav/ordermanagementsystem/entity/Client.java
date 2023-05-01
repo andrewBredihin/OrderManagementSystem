@@ -60,6 +60,16 @@ public class Client implements UserDetails {
         return id;
     }
 
+    @Override
+    public String getFullName() {
+        return lastName + " " + firstName;
+    }
+
+    @Override
+    public String getAdditionalInformation() {
+        return email;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }

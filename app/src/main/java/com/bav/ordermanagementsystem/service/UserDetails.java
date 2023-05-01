@@ -4,10 +4,6 @@ import java.io.Serializable;
 
 public interface UserDetails extends Serializable {
 
-    /*String CLIENT = "client";
-    String EMPLOYEE = "employee";
-    String ADMIN = "admin";*/
-
     String getLogin();
 
     String getPassword();
@@ -15,5 +11,9 @@ public interface UserDetails extends Serializable {
     String getRole();
 
     Long getId();
+
+    String getFullName();
+
+    String getAdditionalInformation();
 
 }
