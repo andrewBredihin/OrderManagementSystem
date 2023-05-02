@@ -18,12 +18,6 @@
         tools:layout="@layout/fragment_create_order" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.bav.ordermanagementsystem.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-
-    <fragment
         android:id="@+id/nav_order_info_client"
         android:name="com.bav.ordermanagementsystem.ui.orderInfo.client.OrderInfoClientFragment"
         tools:layout="@layout/fragment_order_info_client"

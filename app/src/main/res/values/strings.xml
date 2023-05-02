@@ -62,6 +62,9 @@
     <string name="create_order">Создание заказа</string>
     <string name="my_orders">Мои заказы</string>
     <string name="order_info">Информация о заказе</string>
+    <string name="manager_page">Менеджер</string>
+
+    <string name="create_new_employee">Регистрация работника</string>
 
     <string name="orderInExecution">Невозможно отменить: заказ выполняется</string>
 

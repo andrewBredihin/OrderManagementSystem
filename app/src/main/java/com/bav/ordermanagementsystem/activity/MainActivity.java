@@ -70,12 +70,7 @@ public class MainActivity extends AppCompatActivity {
             navigationView.inflateMenu(R.menu.activity_main_drawer_client);
             navController.setGraph(R.navigation.mobile_navigation_client);
             mAppBarConfiguration = new AppBarConfiguration.Builder(
-                    R.id.nav_my_orders,
-                    R.id.nav_create_order,
-                    R.id.nav_slideshow,
-                    R.id.nav_order_info_client,
-                    R.id.nav_user_info,
-                    R.id.nav_client_edit)
+                    R.id.nav_my_orders)
                     .setOpenableLayout(drawer)
                     .build();
         } else if (user.getClass().equals(Employee.class)){
@@ -85,16 +80,17 @@ public class MainActivity extends AppCompatActivity {
                 mAppBarConfiguration = new AppBarConfiguration.Builder(
                         R.id.nav_active_orders,
                         R.id.nav_pending_orders,
-                        R.id.nav_slideshow,
-                        R.id.nav_order_info_employee,
-                        R.id.nav_user_info,
-                        R.id.nav_employee_edit)
+                        R.id.nav_slideshow)
                         .setOpenableLayout(drawer)
                         .build();
             }
             else if(user.getRole().equals(UserRole.MANAGER)){
-                //дописать отображение для менеджера
-
+                navigationView.inflateMenu(R.menu.activity_main_drawer_manager);
+                navController.setGraph(R.navigation.mobile_navigation_manager);
+                mAppBarConfiguration = new AppBarConfiguration.Builder(
+                        R.id.nav_manager_page)
+                        .setOpenableLayout(drawer)
+                        .build();
             }
         }
 
