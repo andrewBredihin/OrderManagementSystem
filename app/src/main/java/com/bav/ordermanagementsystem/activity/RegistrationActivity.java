@@ -2,11 +2,13 @@ package com.bav.ordermanagementsystem.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 
 import com.bav.ordermanagementsystem.R;
 import com.bav.ordermanagementsystem.db.DatabaseClient;
@@ -23,7 +25,6 @@ import io.reactivex.schedulers.Schedulers;
 public class RegistrationActivity extends AppCompatActivity{
 
     private Button btnRegistration;
-    private ImageButton btnBack;
 
     private DatabaseClient databaseClient;
 
@@ -31,14 +32,11 @@ public class RegistrationActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         databaseClient = DatabaseClient.getInstance(getApplicationContext());
 
         btnRegistration = findViewById(R.id.buttonRefistrationRegistrationPage);
-        btnBack = findViewById(R.id.buttonBackRegistrationPage);
-
-        btnBack.setOnClickListener(v -> {
-            onBackPressed();
-        });
 
         btnRegistration.setOnClickListener(v -> {
             RegistrationFragment fragment = (RegistrationFragment) getSupportFragmentManager().findFragmentById(R.id.registration_fragment);
@@ -98,5 +96,16 @@ public class RegistrationActivity extends AppCompatActivity{
                         });
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

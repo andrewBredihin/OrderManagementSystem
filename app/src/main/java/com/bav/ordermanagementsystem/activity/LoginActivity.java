@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         userService = UserService.getInstance(getApplicationContext());
+        userService.setUserDetails(null);
         databaseClient = DatabaseClient.getInstance(getApplicationContext());
 
         login = findViewById(R.id.editTextLoginLoginPage);

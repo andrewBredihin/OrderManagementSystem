@@ -35,6 +35,9 @@ public class UserService{
     }
 
     public void setUserDetails(UserDetails user) {
-        userDetails.setValue(user);
+        if (user == null)
+            userDetails = new MutableLiveData<>();
+        else
+            userDetails.setValue(user);
     }
 }
