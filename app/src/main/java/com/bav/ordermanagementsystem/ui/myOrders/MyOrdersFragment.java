@@ -58,10 +58,10 @@ public class MyOrdersFragment extends Fragment {
             Navigation.findNavController(container).navigate(R.id.nav_create_order);
         });
 
-        DatabaseClient.getInstance(context).getAppDatabase().orderDao().getByClientIdAndStatus(userService.getUserDetails().getId(), OrderStatus.ACTIVE)
+        DatabaseClient.getInstance(context).getAppDatabase().orderDao().getByClientIdAndStatus(userService.getUserDetails().getValue().getId(), OrderStatus.ACTIVE)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(activeOrders -> {
-                    DatabaseClient.getInstance(context).getAppDatabase().orderDao().getByClientIdAndStatus(userService.getUserDetails().getId(), OrderStatus.PENDING)
+                    DatabaseClient.getInstance(context).getAppDatabase().orderDao().getByClientIdAndStatus(userService.getUserDetails().getValue().getId(), OrderStatus.PENDING)
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(pendingOrders -> {
                                 activeOrders.addAll(pendingOrders);

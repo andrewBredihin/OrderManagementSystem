@@ -1,20 +1,25 @@
 package com.bav.ordermanagementsystem.service;
 
 import android.content.Context;
+
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
 import com.bav.ordermanagementsystem.db.DatabaseClient;
+
+import kotlin.Suppress;
 
 public class UserService{
 
     private Context mCtx;
     private static UserService mInstance;
-    private DatabaseClient databaseClient;
 
-    private UserDetails userDetails;
+    private MutableLiveData<UserDetails> userDetails;
 
 
     private UserService(Context mCtx) {
         this.mCtx = mCtx;
-        databaseClient = DatabaseClient.getInstance(mCtx);
+        this.userDetails = new MutableLiveData<>();
     }
 
 
@@ -25,11 +30,11 @@ public class UserService{
         return mInstance;
     }
 
-    public UserDetails getUserDetails() {
+    public LiveData<UserDetails> getUserDetails() {
         return userDetails;
     }
 
     public void setUserDetails(UserDetails user) {
-        this.userDetails = user;
+        userDetails.setValue(user);
     }
 }

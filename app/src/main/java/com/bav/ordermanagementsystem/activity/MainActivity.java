@@ -6,15 +6,19 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bav.ordermanagementsystem.R;
 import com.bav.ordermanagementsystem.entity.Client;
 import com.bav.ordermanagementsystem.entity.Employee;
 import com.bav.ordermanagementsystem.entity.UserRole;
+import com.bav.ordermanagementsystem.service.UserDetails;
 import com.bav.ordermanagementsystem.service.UserService;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.core.view.GravityCompat;
+import androidx.lifecycle.Observer;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -29,11 +33,13 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     private UserService userService;
+    private UserDetails user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         userService = UserService.getInstance(getApplicationContext());
+        user = userService.getUserDetails().getValue();
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -43,24 +49,50 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = binding.navView;
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
 
-        //Проверка на тип пользователя(настроить)
-        if (userService.getUserDetails().getClass().equals(Client.class)) {
+        View header = navigationView.getHeaderView(0);
+        TextView name = header.findViewById(R.id.navHeaderFullName);
+        TextView addInfo = header.findViewById(R.id.navHeaderAddInfo);
+        ImageView image = header.findViewById(R.id.userImage);
+        image.setOnClickListener(v -> {
+            navController.navigate(R.id.nav_user_info);
+            drawer.close();
+        });
+
+        userService.getUserDetails().observe(this, new Observer<UserDetails>() {
+            @Override
+            public void onChanged(UserDetails userDetails) {
+                name.setText(userDetails.getFullName());
+                addInfo.setText(userDetails.getAdditionalInformation());
+            }
+        });
+
+        if (user.getClass().equals(Client.class)) {
             navigationView.inflateMenu(R.menu.activity_main_drawer_client);
             navController.setGraph(R.navigation.mobile_navigation_client);
             mAppBarConfiguration = new AppBarConfiguration.Builder(
-                    R.id.nav_my_orders, R.id.nav_create_order, R.id.nav_slideshow, R.id.nav_order_info_client)
+                    R.id.nav_my_orders,
+                    R.id.nav_create_order,
+                    R.id.nav_slideshow,
+                    R.id.nav_order_info_client,
+                    R.id.nav_user_info,
+                    R.id.nav_client_edit)
                     .setOpenableLayout(drawer)
                     .build();
-        } else if (userService.getUserDetails().getClass().equals(Employee.class)){
-            if (userService.getUserDetails().getRole().equals(UserRole.EMPLOYEE)){
+        } else if (user.getClass().equals(Employee.class)){
+            if (user.getRole().equals(UserRole.EMPLOYEE)){
                 navigationView.inflateMenu(R.menu.activity_main_drawer_employee);
                 navController.setGraph(R.navigation.mobile_navigation_employee);
                 mAppBarConfiguration = new AppBarConfiguration.Builder(
-                        R.id.nav_active_orders, R.id.nav_pending_orders, R.id.nav_slideshow, R.id.nav_order_info_employee)
+                        R.id.nav_active_orders,
+                        R.id.nav_pending_orders,
+                        R.id.nav_slideshow,
+                        R.id.nav_order_info_employee,
+                        R.id.nav_user_info,
+                        R.id.nav_employee_edit)
                         .setOpenableLayout(drawer)
                         .build();
             }
-            else if(userService.getUserDetails().getRole().equals(UserRole.MANAGER)){
+            else if(user.getRole().equals(UserRole.MANAGER)){
                 //дописать отображение для менеджера
 
             }
@@ -72,12 +104,6 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
-        View header = navigationView.getHeaderView(0);
-        TextView name = header.findViewById(R.id.navHeaderFullName);
-        TextView addInfo = header.findViewById(R.id.navHeaderAddInfo);
-        name.setText(userService.getUserDetails().getFullName());
-        addInfo.setText(userService.getUserDetails().getAdditionalInformation());
     }
 
     @Override

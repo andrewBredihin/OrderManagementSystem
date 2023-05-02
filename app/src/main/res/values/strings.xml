@@ -6,6 +6,12 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="action_edit">Редактировать</string>
+    <string name="action_save">Сохранить</string>
+    <string name="user_page">Информация о пользователе</string>
+
+    <string name="user_update">Информация о пользователе обновлена</string>
+    <string name="user_not_update">Ошибка, повторите попытку</string>
 
     <string name="login">Login</string>
     <string name="password">Password</string>

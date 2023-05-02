@@ -2,6 +2,7 @@ package com.bav.ordermanagementsystem.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -35,7 +36,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         userService = UserService.getInstance(getApplicationContext());
-        userService.setUserDetails(null);
         databaseClient = DatabaseClient.getInstance(getApplicationContext());
 
         login = findViewById(R.id.editTextLoginLoginPage);

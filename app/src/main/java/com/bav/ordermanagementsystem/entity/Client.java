@@ -62,7 +62,7 @@ public class Client implements UserDetails {
 
     @Override
     public String getFullName() {
-        return lastName + " " + firstName;
+        return lastName + " " + firstName + " " + secondName;
     }
 
     @Override
@@ -106,6 +106,7 @@ public class Client implements UserDetails {
         this.email = email;
     }
 
+    @Override
     public Long getPhone() {
         return phone;
     }

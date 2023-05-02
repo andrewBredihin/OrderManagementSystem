@@ -28,4 +28,16 @@
         android:name="com.bav.ordermanagementsystem.ui.orderInfo.client.OrderInfoClientFragment"
         tools:layout="@layout/fragment_order_info_client"
         android:label="@string/order_info"/>
+
+    <fragment
+        android:id="@+id/nav_user_info"
+        android:name="com.bav.ordermanagementsystem.ui.userPage.UserInfoFragment"
+        tools:layout="@layout/fragment_user_page"
+        android:label="@string/user_page"/>
+
+    <fragment
+        android:id="@+id/nav_client_edit"
+        android:name="com.bav.ordermanagementsystem.ui.userPage.edit.ClientEditFragment"
+        tools:layout="@layout/fragment_client_edit"
+        android:label="@string/user_page"/>
 </navigation>

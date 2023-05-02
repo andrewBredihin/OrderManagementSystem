@@ -28,7 +28,6 @@ public class Employee implements UserDetails {
         this.role = role;
     }
 
-
     @Override
     public String getLogin() {
         return login;
@@ -90,6 +89,7 @@ public class Employee implements UserDetails {
         this.password = password;
     }
 
+    @Override
     public Long getPhone() {
         return phone;
     }

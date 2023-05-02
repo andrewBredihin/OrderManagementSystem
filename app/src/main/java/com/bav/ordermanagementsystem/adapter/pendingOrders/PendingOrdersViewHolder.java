@@ -44,7 +44,7 @@ public class PendingOrdersViewHolder extends RecyclerView.ViewHolder implements 
 
         toActiveButton.setOnClickListener(v -> {
             item.setStatus(OrderStatus.ACTIVE);
-            item.setEmployee_id(UserService.getInstance(view.getContext()).getUserDetails().getId());
+            item.setEmployee_id(UserService.getInstance(view.getContext()).getUserDetails().getValue().getId());
             Completable.fromAction(() -> DatabaseClient.getInstance(view.getContext()).getAppDatabase().orderDao().update(item))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())

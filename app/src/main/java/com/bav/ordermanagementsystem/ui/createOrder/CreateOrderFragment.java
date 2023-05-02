@@ -90,7 +90,7 @@ public class CreateOrderFragment extends Fragment {
             Order order = new Order();
             order.setAddress(address.getText().toString());
             order.setTitle(title.getText().toString());
-            order.setClient_id(userService.getUserDetails().getId());
+            order.setClient_id(userService.getUserDetails().getValue().getId());
             order.setPrice(price);
             order.setDate(dateFormat.format(currentDate));
             order.setItems(items);

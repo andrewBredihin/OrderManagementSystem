@@ -56,7 +56,7 @@ public class OrderInfoEmployeeFragment extends Fragment {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(order -> {
                     binding.setOrder(order);
-                    if (Objects.equals(order.getEmployee_id(), userService.getUserDetails().getId())){
+                    if (Objects.equals(order.getEmployee_id(), userService.getUserDetails().getValue().getId())){
                         binding.orderInfoOrderActive.setOnInflateListener(new ViewStub.OnInflateListener() {
                             @Override
                             public void onInflate(ViewStub viewStub, View view) {
@@ -111,7 +111,7 @@ public class OrderInfoEmployeeFragment extends Fragment {
                                 OrderInfoPendingBinding binding = DataBindingUtil.bind(view);
                                 binding.orderInfoToActive.setOnClickListener(v -> {
                                     order.setStatus(OrderStatus.ACTIVE);
-                                    order.setEmployee_id(userService.getUserDetails().getId());
+                                    order.setEmployee_id(userService.getUserDetails().getValue().getId());
                                     Completable.fromAction(() -> DatabaseClient.getInstance(view.getContext()).getAppDatabase().orderDao().update(order))
                                             .subscribeOn(Schedulers.io())
                                             .observeOn(AndroidSchedulers.mainThread())
