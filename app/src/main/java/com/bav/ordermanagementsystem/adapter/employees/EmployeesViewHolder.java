@@ -3,23 +3,12 @@ package com.bav.ordermanagementsystem.adapter.employees;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bav.ordermanagementsystem.R;
-import com.bav.ordermanagementsystem.adapter.RecyclerViewHolderInterface;
-import com.bav.ordermanagementsystem.db.DatabaseClient;
 import com.bav.ordermanagementsystem.entity.Employee;
-import com.bav.ordermanagementsystem.entity.Order;
-import com.bav.ordermanagementsystem.entity.OrderStatus;
-
-import io.reactivex.Completable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.observers.DisposableCompletableObserver;
-import io.reactivex.schedulers.Schedulers;
 
 public class EmployeesViewHolder extends RecyclerView.ViewHolder {
     final Button btnEmployee;

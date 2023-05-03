@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,11 +18,15 @@ import androidx.navigation.Navigation;
 
 import com.bav.ordermanagementsystem.R;
 import com.bav.ordermanagementsystem.activity.LoginActivity;
+import com.bav.ordermanagementsystem.adapter.orderItems.OrderItemsAdapter;
+import com.bav.ordermanagementsystem.adapter.orderItems.info.OrderItemsInfoAdapter;
+import com.bav.ordermanagementsystem.adapter.orderItems.info.OrderItemsInfoViewHolder;
 import com.bav.ordermanagementsystem.databinding.FragmentCreateOrderBinding;
 import com.bav.ordermanagementsystem.databinding.FragmentCreateOrderGetItemsBinding;
 import com.bav.ordermanagementsystem.db.DatabaseClient;
 import com.bav.ordermanagementsystem.entity.Client;
 import com.bav.ordermanagementsystem.entity.Order;
+import com.bav.ordermanagementsystem.entity.OrderAndOrderItems;
 import com.bav.ordermanagementsystem.entity.OrderItem;
 import com.bav.ordermanagementsystem.entity.OrderStatus;
 import com.bav.ordermanagementsystem.service.UserService;
@@ -44,9 +50,12 @@ public class CreateOrderFragment extends Fragment {
 
     private FragmentCreateOrderBinding binding;
     private UserService userService;
+    private OrderItemsStore store;
 
-    private TextInputEditText title, address;
+    private EditText title, address;
     private Button createOrder;
+
+    private double price = 0;
 
     @Nullable
     @Override
@@ -56,10 +65,20 @@ public class CreateOrderFragment extends Fragment {
         binding = FragmentCreateOrderBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        store = OrderItemsStore.getInstance(getContext());
         userService = UserService.getInstance(getContext());
 
         title = binding.title;
         address = binding.address;
+
+        List<OrderItem> items = store.getItems();
+        store = null;
+        OrderItemsInfoAdapter adapter = new OrderItemsInfoAdapter(getContext(), items, R.layout.order_item_info_fragment);
+        binding.orderItemsList.setAdapter(adapter);
+        for (OrderItem x : items){
+            price += x.getPrice();
+        }
+        binding.textViewPrice.setText(new StringBuilder().append(price).append(" ").append(getResources().getString(R.string.ruble)).toString());
 
         createOrder = binding.buttonCreateOrder;
         createOrder.setOnClickListener(v -> {
@@ -70,17 +89,6 @@ public class CreateOrderFragment extends Fragment {
             else if (address.getText().toString().length() < 10){
                 Toast.makeText(getContext(), R.string.errorCreateOrderAddress, Toast.LENGTH_SHORT).show();
                 return;
-            }
-
-            OrderGetItemsViewModel model = new ViewModelProvider(this).get(OrderGetItemsViewModel.class);
-            List<OrderItem> items = model.getItems();
-            /*if (items.size() == 0){
-                Toast.makeText(getContext(), R.string.orderItemWasNotSelected, Toast.LENGTH_SHORT).show();
-                return;
-            }*/
-            double price = 0;
-            for (OrderItem x : items){
-                price += x.getPrice();
             }
 
             Date currentDate = new Date();
@@ -102,8 +110,37 @@ public class CreateOrderFragment extends Fragment {
                     .subscribe(new DisposableCompletableObserver() {
                         @Override
                         public void onComplete() {
-                            Toast.makeText(getContext(), R.string.orderCreated, Toast.LENGTH_SHORT).show();
-                            Navigation.findNavController(container).navigate(R.id.nav_my_orders);
+                            List<OrderAndOrderItems> orderAndOrderItems = new ArrayList<>(order.getItems().size());
+                            for (OrderItem x : order.getItems()){
+                                orderAndOrderItems.add(new OrderAndOrderItems(order.getId(), x.getId()));
+                            }
+
+                            Completable.fromAction(() -> DatabaseClient.getInstance(getContext()).getAppDatabase().orderAndOrderItemsDao().insertAll(orderAndOrderItems))
+                                    .subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe(new DisposableCompletableObserver() {
+                                        @Override
+                                        public void onComplete() {
+                                            Toast.makeText(getContext(), R.string.orderCreated, Toast.LENGTH_SHORT).show();
+                                            Navigation.findNavController(container).navigate(R.id.nav_my_orders);
+                                        }
+
+                                        @Override
+                                        public void onError(Throwable e) {
+                                            Completable.fromAction(() -> DatabaseClient.getInstance(getContext()).getAppDatabase().orderDao().delete(order))
+                                                    .subscribeOn(Schedulers.io())
+                                                    .observeOn(AndroidSchedulers.mainThread())
+                                                    .subscribe(new DisposableCompletableObserver() {
+                                                        @Override
+                                                        public void onComplete() { }
+
+                                                        @Override
+                                                        public void onError(Throwable e) { }
+                                                    });
+
+                                            Toast.makeText(getContext(), R.string.orderNotCreated, Toast.LENGTH_LONG).show();
+                                        }
+                                    });
                         }
 
                         @Override

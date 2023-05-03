@@ -140,6 +140,11 @@ public class OrderInfoEmployeeFragment extends Fragment {
                     }
                 });
 
+        //Прописать получение списка своих OrderItem по `getArguments().getLong("orderId")` и таблице `order_and_order_items`
+        /*List<OrderItem> items;
+        OrderItemsInfoAdapter adapter = new OrderItemsInfoAdapter(getContext(), items, R.layout.order_item_info_fragment);
+        binding.orderItemsList.setAdapter(adapter);*/
+
         return root;
     }
 }

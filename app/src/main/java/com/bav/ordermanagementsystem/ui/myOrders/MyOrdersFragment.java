@@ -55,7 +55,7 @@ public class MyOrdersFragment extends Fragment {
 
         createOrder = binding.buttonCreateOrders;
         createOrder.setOnClickListener(v -> {
-            Navigation.findNavController(container).navigate(R.id.nav_create_order);
+            Navigation.findNavController(container).navigate(R.id.nav_select_orderItems);
         });
 
         DatabaseClient.getInstance(context).getAppDatabase().orderDao().getByClientIdAndStatus(userService.getUserDetails().getValue().getId(), OrderStatus.ACTIVE)
@@ -69,9 +69,6 @@ public class MyOrdersFragment extends Fragment {
                                 binding.ordersList.setAdapter(adapter);
                             });
                 });
-
-
-
         return root;
     }
 }

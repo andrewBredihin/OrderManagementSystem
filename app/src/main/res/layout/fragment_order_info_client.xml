@@ -12,6 +12,39 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="28dp"
+            android:text="@string/title"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/order_info_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="28dp"
+            android:text="@{order.title}"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="28dp"
+            android:text="@string/address"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/order_info_title" />
+
+        <TextView
             android:id="@+id/order_info_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -20,7 +53,18 @@
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/address" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="28dp"
+            android:text="@string/status"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/order_info_address" />
 
         <TextView
             android:id="@+id/order_info_status"
@@ -31,7 +75,7 @@
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/order_info_address" />
+            app:layout_constraintTop_toBottomOf="@+id/status" />
 
         <ViewStub
             android:id="@+id/order_info_employee"
@@ -43,16 +87,15 @@
             app:layout_constraintTop_toBottomOf="@+id/order_info_status" />
 
 
-        <fragment
-            android:id="@+id/order_info_fragment"
-            android:name="com.bav.ordermanagementsystem.ui.createOrder.CreateOrderGetItemsFragment"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/orderItemsList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/order_info_canceled"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/order_info_employee"
-            tools:layout="@layout/fragment_create_order_get_items" />
+            app:layout_constraintTop_toTopOf="@+id/order_info_employee" />
 
         <Button
             android:id="@+id/order_info_canceled"

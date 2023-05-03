@@ -10,7 +10,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bav.ordermanagementsystem.R;
-import com.bav.ordermanagementsystem.adapter.RecyclerViewHolderInterface;
+import com.bav.ordermanagementsystem.adapter.OrderRecyclerViewHolderInterface;
 import com.bav.ordermanagementsystem.db.DatabaseClient;
 import com.bav.ordermanagementsystem.entity.Order;
 import com.bav.ordermanagementsystem.entity.OrderStatus;
@@ -20,7 +20,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.schedulers.Schedulers;
 
-public class MyOrdersViewHolder extends RecyclerView.ViewHolder implements RecyclerViewHolderInterface {
+public class MyOrdersViewHolder extends RecyclerView.ViewHolder implements OrderRecyclerViewHolderInterface {
     final Button itemTitle;
     final ImageButton deleteButton;
     private View view;

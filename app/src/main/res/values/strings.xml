@@ -29,6 +29,10 @@
     <string name="registration_password">Пароль</string>
     <string name="registration_confirm_password">Подтвердить пароль</string>
 
+    <string name="continue_str">Продолжить</string>
+    <string name="price">Цена: </string>
+    <string name="ruble">Руб</string>
+
     <string name="errorFirstNameRegistrationPage">Имя не должно быть короче 1 символа</string>
     <string name="errorLastNameRegistrationPage">Фамилия не должна быть короче 1 символа</string>
     <string name="errorSecondNameRegistrationPage">Отчество не должно быть короче 1 символа</string>
@@ -44,6 +48,8 @@
     <string name="createOrderButton">Создать заказ</string>
     <string name="address">Адрес</string>
     <string name="title">Название</string>
+    <string name="status">Статус</string>
+    <string name="order_employee">Заказ принял</string>
     <string name="orderCreated">Заказ создан</string>
     <string name="orderCanceled">Заказ отменен</string>
     <string name="orderToCanceled">Отменить заказ</string>
@@ -63,6 +69,7 @@
     <string name="my_orders">Мои заказы</string>
     <string name="order_info">Информация о заказе</string>
     <string name="manager_page">Менеджер</string>
+    <string name="order_items">Услуги</string>
 
     <string name="create_new_employee">Регистрация работника</string>
 

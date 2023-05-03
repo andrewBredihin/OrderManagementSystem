@@ -10,19 +10,17 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bav.ordermanagementsystem.R;
-import com.bav.ordermanagementsystem.adapter.RecyclerViewHolderInterface;
-import com.bav.ordermanagementsystem.databinding.FragmentActiveOrdersOrderBinding;
+import com.bav.ordermanagementsystem.adapter.OrderRecyclerViewHolderInterface;
 import com.bav.ordermanagementsystem.db.DatabaseClient;
 import com.bav.ordermanagementsystem.entity.Order;
 import com.bav.ordermanagementsystem.entity.OrderStatus;
-import com.bav.ordermanagementsystem.service.UserService;
 
 import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.schedulers.Schedulers;
 
-public class ActiveOrdersViewHolder extends RecyclerView.ViewHolder implements RecyclerViewHolderInterface {
+public class ActiveOrdersViewHolder extends RecyclerView.ViewHolder implements OrderRecyclerViewHolderInterface {
     final Button itemTitle;
     final ImageButton backButton, completeButton;
     private View view;

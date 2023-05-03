@@ -20,13 +20,19 @@ import androidx.navigation.Navigation;
 
 import com.bav.ordermanagementsystem.R;
 import com.bav.ordermanagementsystem.adapter.myOrders.MyOrdersAdapter;
+import com.bav.ordermanagementsystem.adapter.orderItems.info.OrderItemsInfoAdapter;
 import com.bav.ordermanagementsystem.databinding.FragmentOrderInfoClientBinding;
 import com.bav.ordermanagementsystem.databinding.OrderEmployeeTextviewBinding;
 import com.bav.ordermanagementsystem.db.DatabaseClient;
 import com.bav.ordermanagementsystem.entity.Employee;
 import com.bav.ordermanagementsystem.entity.Order;
+import com.bav.ordermanagementsystem.entity.OrderAndOrderItems;
+import com.bav.ordermanagementsystem.entity.OrderItem;
 import com.bav.ordermanagementsystem.entity.OrderStatus;
 import com.bav.ordermanagementsystem.service.UserService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -38,6 +44,7 @@ public class OrderInfoClientFragment extends Fragment {
 
     private FragmentOrderInfoClientBinding binding;
     private UserService userService;
+    private DatabaseClient databaseClient;
 
     private Button canceledOrder;
 
@@ -49,9 +56,11 @@ public class OrderInfoClientFragment extends Fragment {
         View root = binding.getRoot();
         Context context = getContext();
         userService = UserService.getInstance(context);
+        databaseClient = DatabaseClient.getInstance(context);
+
         canceledOrder = binding.orderInfoCanceled;
 
-        DatabaseClient.getInstance(context).getAppDatabase().orderDao().getById(getArguments().getLong("orderId"))
+        databaseClient.getAppDatabase().orderDao().getById(getArguments().getLong("orderId"))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(order -> {
                     binding.setOrder(order);
@@ -78,10 +87,8 @@ public class OrderInfoClientFragment extends Fragment {
                     });
                 });
 
-
-
         if (getArguments().getLong("employeeId") != 0){
-            DatabaseClient.getInstance(context).getAppDatabase().employeeDao().getById(getArguments().getLong("employeeId"))
+            databaseClient.getAppDatabase().employeeDao().getById(getArguments().getLong("employeeId"))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new DisposableMaybeObserver<Employee>() {
@@ -107,6 +114,11 @@ public class OrderInfoClientFragment extends Fragment {
                         }
                     });
         }
+
+        //Прописать получение списка своих OrderItem по `getArguments().getLong("orderId")` и таблице `order_and_order_items`
+        /*List<OrderItem> items;
+        OrderItemsInfoAdapter adapter = new OrderItemsInfoAdapter(getContext(), items, R.layout.order_item_info_fragment);
+        binding.orderItemsList.setAdapter(adapter);*/
 
         return root;
     }

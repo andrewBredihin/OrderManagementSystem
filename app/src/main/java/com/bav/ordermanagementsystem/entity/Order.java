@@ -109,7 +109,7 @@ public class Order {
         this.date = date;
     }
 
-    public Collection<OrderItem> getItems() {
+    public List<OrderItem> getItems() {
         return items;
     }
 
