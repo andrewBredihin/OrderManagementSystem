@@ -45,7 +45,7 @@ public class UserInfoFragment extends Fragment {
 
         userEdit = binding.btnEdit;
         userEdit.setOnClickListener(v -> {
-            if (userService.getUserDetails().getClass().getName().equals(Client.class.getName())){
+            if (userService.getUserDetails().getValue().getClass().getName().equals(Client.class.getName())){
                 Navigation.findNavController(container).navigate(R.id.nav_client_edit);
             } else {
                 Navigation.findNavController(container).navigate(R.id.nav_employee_edit);
