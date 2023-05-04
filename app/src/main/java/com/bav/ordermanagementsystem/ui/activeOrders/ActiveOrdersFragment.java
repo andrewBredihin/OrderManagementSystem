@@ -44,7 +44,7 @@ public class ActiveOrdersFragment extends Fragment {
 
         RecyclerView recyclerView = binding.activeOrdersList;
 
-        DatabaseClient.getInstance(context).getAppDatabase().orderDao().getByStatusId(OrderStatus.ACTIVE)
+        DatabaseClient.getInstance(context).getAppDatabase().orderDao().getByEmployeeIdAndStatusId(userService.getUserDetails().getValue().getId(), OrderStatus.ACTIVE)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(orders -> {
                     ActiveOrdersAdapter adapter = new ActiveOrdersAdapter(context, orders, R.layout.fragment_active_orders_order);

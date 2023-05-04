@@ -33,6 +33,15 @@
     <string name="price">Цена: </string>
     <string name="ruble">Руб</string>
 
+    <string name="create_orderItem_button">Создать</string>
+    <string name="create_orderItem">Создание OrderItem</string>
+    <string name="manager_page">Страница работников</string>
+    <string name="create_orderItem_error">Ошибка при создании OrderItem</string>
+    <string name="create_new_employee">Регистрация работника</string>
+    <string name="edit_employee">Редактирование работника</string>
+    <string name="employee_info">Информация о работнике</string>
+    <string name="user_edit">Редактирование пользователя</string>
+
     <string name="errorFirstNameRegistrationPage">Имя не должно быть короче 1 символа</string>
     <string name="errorLastNameRegistrationPage">Фамилия не должна быть короче 1 символа</string>
     <string name="errorSecondNameRegistrationPage">Отчество не должно быть короче 1 символа</string>
@@ -68,10 +77,9 @@
     <string name="create_order">Создание заказа</string>
     <string name="my_orders">Мои заказы</string>
     <string name="order_info">Информация о заказе</string>
-    <string name="manager_page">Менеджер</string>
     <string name="order_items">Услуги</string>
 
-    <string name="create_new_employee">Регистрация работника</string>
+
 
     <string name="orderInExecution">Невозможно отменить: заказ выполняется</string>
 

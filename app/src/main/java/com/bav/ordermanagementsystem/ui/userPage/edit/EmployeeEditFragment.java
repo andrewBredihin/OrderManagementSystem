@@ -73,7 +73,7 @@ public class EmployeeEditFragment extends Fragment {
                         public void onComplete() {
                             userService.setUserDetails(employee);
                             Toast.makeText(getContext(), R.string.user_update, Toast.LENGTH_SHORT).show();
-                            Navigation.findNavController(root).navigate(R.id.nav_user_info);
+                            Navigation.findNavController(root).navigate(R.id.nav_active_orders);
                         }
 
                         @Override
@@ -84,5 +84,11 @@ public class EmployeeEditFragment extends Fragment {
         });
 
         return root;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

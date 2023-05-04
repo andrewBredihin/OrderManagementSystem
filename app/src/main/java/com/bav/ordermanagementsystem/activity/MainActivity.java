@@ -88,7 +88,8 @@ public class MainActivity extends AppCompatActivity {
                 navigationView.inflateMenu(R.menu.activity_main_drawer_manager);
                 navController.setGraph(R.navigation.mobile_navigation_manager);
                 mAppBarConfiguration = new AppBarConfiguration.Builder(
-                        R.id.nav_manager_page)
+                        R.id.nav_employees_page,
+                        R.id.nav_create_order_item)
                         .setOpenableLayout(drawer)
                         .build();
             }

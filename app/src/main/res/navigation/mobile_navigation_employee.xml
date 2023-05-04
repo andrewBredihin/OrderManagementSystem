@@ -39,6 +39,6 @@
         android:id="@+id/nav_employee_edit"
         android:name="com.bav.ordermanagementsystem.ui.userPage.edit.EmployeeEditFragment"
         tools:layout="@layout/fragment_employee_edit"
-        android:label="@string/user_page"/>
+        android:label="@string/user_edit"/>
 
 </navigation>

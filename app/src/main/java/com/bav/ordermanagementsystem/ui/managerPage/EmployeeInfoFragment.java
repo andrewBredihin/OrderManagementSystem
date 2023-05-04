@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -34,7 +35,7 @@ public class EmployeeInfoFragment extends Fragment {
     private UserService userService;
     private DatabaseClient databaseClient;
 
-    private Button newEmployee;
+    private Button editEmployee;
 
     @SuppressLint("CheckResult")
     @Nullable
@@ -73,9 +74,9 @@ public class EmployeeInfoFragment extends Fragment {
                     binding.completeOrdersList.setAdapter(adapter);
                 });
 
-        newEmployee = binding.btnEdit;
-        newEmployee.setOnClickListener(v -> {
-            Navigation.findNavController(container).navigate(R.id.nav_create_order);
+        editEmployee = binding.btnEdit;
+        editEmployee.setOnClickListener(v -> {
+            //Navigation.findNavController(container).navigate(R.id.nav_create_order);
         });
 
         return root;
