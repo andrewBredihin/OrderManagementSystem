@@ -15,7 +15,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        style="@style/MyLeftButtonStyle"/>
 
     <ImageButton
         android:id="@+id/activeOrdersOrderBack"
@@ -24,8 +25,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/activeOrdersOrderComplete"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_revert"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:srcCompat="@mipmap/ic_back_foreground"
+        android:background="@android:color/transparent"
+        tools:ignore="SpeakableTextPresentCheck"
+        style="@style/MyButtonStyle"/>
 
     <ImageButton
         android:id="@+id/activeOrdersOrderComplete"
@@ -34,6 +37,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_star"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:srcCompat="@mipmap/ic_finish_foreground"
+        android:background="@android:color/transparent"
+        tools:ignore="SpeakableTextPresentCheck"
+        style="@style/MyButtonStyle"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -56,6 +56,7 @@
 
     <string name="createOrderButton">Создать заказ</string>
     <string name="address">Адрес</string>
+    <string name="date">Дата завершения</string>
     <string name="title">Название</string>
     <string name="status">Статус</string>
     <string name="order_employee">Заказ принял</string>
@@ -78,8 +79,6 @@
     <string name="my_orders">Мои заказы</string>
     <string name="order_info">Информация о заказе</string>
     <string name="order_items">Услуги</string>
-
-
 
     <string name="orderInExecution">Невозможно отменить: заказ выполняется</string>
 

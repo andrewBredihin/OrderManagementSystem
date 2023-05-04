@@ -9,6 +9,7 @@
         android:id="@+id/myOrdersOrderButton"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        style="@style/MyLeftButtonStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/myOrdersOrderDelete"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,10 +20,12 @@
         android:id="@+id/myOrdersOrderDelete"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        style="@style/MyButtonStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_delete"
+        app:srcCompat="@mipmap/ic_delete_foreground"
+        android:background="@android:color/transparent"
         tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

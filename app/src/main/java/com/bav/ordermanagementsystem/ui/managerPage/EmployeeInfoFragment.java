@@ -76,7 +76,7 @@ public class EmployeeInfoFragment extends Fragment {
 
         editEmployee = binding.btnEdit;
         editEmployee.setOnClickListener(v -> {
-            //Navigation.findNavController(container).navigate(R.id.nav_create_order);
+
         });
 
         return root;

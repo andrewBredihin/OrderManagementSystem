@@ -17,6 +17,7 @@
         <fragment
             android:id="@+id/registration_fragment"
             android:name="com.bav.ordermanagementsystem.ui.registration.RegistrationFragment"
+            tools:layout="@layout/fragment_registration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </ScrollView>
@@ -30,6 +31,7 @@
         android:text="@string/registrationButtonText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/MyButtonStyle"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

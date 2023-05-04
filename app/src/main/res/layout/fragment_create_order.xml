@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/title"
-        android:textSize="24sp"
+        style="@style/MyEditTextStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/address"
         android:inputType="textPostalAddress"
-        android:textSize="24sp"
+        style="@style/MyEditTextStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/price"
-        android:textSize="24sp"
+        style="@style/MyTextViewStyle"
         app:layout_constraintBottom_toTopOf="@+id/buttonCreateOrder"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -50,7 +50,7 @@
         android:id="@+id/textViewPrice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
+        style="@style/MyTextViewStyle"
         app:layout_constraintBottom_toTopOf="@+id/buttonCreateOrder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView2" />
@@ -59,7 +59,7 @@
         android:id="@+id/buttonCreateOrder"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:minHeight="48dp"
+        style="@style/MyButtonStyle"
         android:text="@string/createOrderButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

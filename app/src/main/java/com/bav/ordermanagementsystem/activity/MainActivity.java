@@ -79,8 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 navController.setGraph(R.navigation.mobile_navigation_employee);
                 mAppBarConfiguration = new AppBarConfiguration.Builder(
                         R.id.nav_active_orders,
-                        R.id.nav_pending_orders,
-                        R.id.nav_slideshow)
+                        R.id.nav_pending_orders)
                         .setOpenableLayout(drawer)
                         .build();
             }

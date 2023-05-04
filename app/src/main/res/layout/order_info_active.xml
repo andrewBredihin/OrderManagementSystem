@@ -11,14 +11,14 @@
             android:id="@+id/order_info_complete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="48dp"
+            style="@style/MyButtonStyle"
             android:text="@string/orderComplete" />
 
         <Button
             android:id="@+id/order_info_canceled"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="48dp"
+            style="@style/MyButtonStyle"
             android:text="@string/orderToCanceled" />
     </LinearLayout>
 

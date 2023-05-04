@@ -20,8 +20,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:textSize="24sp"
-            android:hint="@string/registration_first_name" />
+            android:hint="@string/registration_first_name"
+            style="@style/MyEditTextStyle"/>
 
         <EditText
             android:id="@+id/editTextLastNameRegistrationPage"
@@ -30,7 +30,8 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:textSize="24sp"
-            android:hint="@string/registration_last_name"/>
+            android:hint="@string/registration_last_name"
+            style="@style/MyEditTextStyle"/>
 
         <EditText
             android:id="@+id/editTextSecondNameRegistrationPage"
@@ -39,7 +40,8 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:textSize="24sp"
-            android:hint="@string/registration_second_name"/>
+            android:hint="@string/registration_second_name"
+            style="@style/MyEditTextStyle"/>
 
         <EditText
             android:id="@+id/editTextEmailRegistrationPage"
@@ -48,7 +50,8 @@
             android:ems="10"
             android:inputType="textEmailAddress"
             android:textSize="24sp"
-            android:hint="@string/registration_mail"/>
+            android:hint="@string/registration_mail"
+            style="@style/MyEditTextStyle"/>
 
         <EditText
             android:id="@+id/editTextPhoneRegistrationPage"
@@ -57,7 +60,8 @@
             android:ems="10"
             android:inputType="phone"
             android:textSize="24sp"
-            android:hint="@string/registration_phone"/>
+            android:hint="@string/registration_phone"
+            style="@style/MyEditTextStyle"/>
 
         <EditText
             android:id="@+id/editTextLoginRegistrationPage"
@@ -66,7 +70,8 @@
             android:ems="10"
             android:inputType="text"
             android:textSize="24sp"
-            android:hint="@string/registration_login"/>
+            android:hint="@string/registration_login"
+            style="@style/MyEditTextStyle"/>
 
         <EditText
             android:id="@+id/editTextPasswordRegistrationPage"
@@ -75,7 +80,8 @@
             android:ems="10"
             android:inputType="textPassword"
             android:textSize="24sp"
-            android:hint="@string/registration_password"/>
+            android:hint="@string/registration_password"
+            style="@style/MyEditTextStyle"/>
 
         <EditText
             android:id="@+id/editTextConfirmPasswordRegistrationPage"
@@ -84,7 +90,8 @@
             android:ems="10"
             android:inputType="textPassword"
             android:textSize="24sp"
-            android:hint="@string/registration_confirm_password"/>
+            android:hint="@string/registration_confirm_password"
+            style="@style/MyEditTextStyle"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

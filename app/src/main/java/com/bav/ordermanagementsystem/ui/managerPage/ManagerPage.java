@@ -41,7 +41,7 @@ public class ManagerPage extends Fragment {
 
         newEmployee = binding.newEmployee;
         newEmployee.setOnClickListener(v -> {
-            Navigation.findNavController(container).navigate(R.id.nav_create_order);
+
         });
 
         DatabaseClient.getInstance(context).getAppDatabase().employeeDao().getAll()
