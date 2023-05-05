@@ -15,10 +15,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.bav.ordermanagementsystem.R;
-import com.bav.ordermanagementsystem.databinding.FragmentClientEditBinding;
 import com.bav.ordermanagementsystem.databinding.FragmentEmployeeEditBinding;
 import com.bav.ordermanagementsystem.db.DatabaseClient;
-import com.bav.ordermanagementsystem.entity.Client;
 import com.bav.ordermanagementsystem.entity.Employee;
 import com.bav.ordermanagementsystem.service.UserService;
 

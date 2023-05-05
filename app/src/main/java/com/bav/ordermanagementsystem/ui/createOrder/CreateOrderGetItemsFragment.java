@@ -9,11 +9,9 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.bav.ordermanagementsystem.R;
-import com.bav.ordermanagementsystem.adapter.activeOrders.ActiveOrdersAdapter;
 import com.bav.ordermanagementsystem.adapter.orderItems.OrderItemsAdapter;
 import com.bav.ordermanagementsystem.databinding.FragmentCreateOrderGetItemsBinding;
 import com.bav.ordermanagementsystem.entity.OrderItem;

@@ -1,7 +1,6 @@
 package com.bav.ordermanagementsystem.ui.activeOrders;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,17 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bav.ordermanagementsystem.R;
 import com.bav.ordermanagementsystem.adapter.activeOrders.ActiveOrdersAdapter;
-import com.bav.ordermanagementsystem.adapter.myOrders.MyOrdersAdapter;
 import com.bav.ordermanagementsystem.databinding.FragmentActiveOrdersMainBinding;
-import com.bav.ordermanagementsystem.databinding.FragmentActiveOrdersOrderBinding;
-import com.bav.ordermanagementsystem.databinding.FragmentMyOrdersBinding;
 import com.bav.ordermanagementsystem.db.DatabaseClient;
-import com.bav.ordermanagementsystem.entity.Order;
 import com.bav.ordermanagementsystem.entity.OrderStatus;
 import com.bav.ordermanagementsystem.service.UserService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 

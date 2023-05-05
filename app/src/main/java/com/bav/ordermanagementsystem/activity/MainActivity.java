@@ -2,9 +2,7 @@ package com.bav.ordermanagementsystem.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,7 +15,6 @@ import com.bav.ordermanagementsystem.service.UserDetails;
 import com.bav.ordermanagementsystem.service.UserService;
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.core.view.GravityCompat;
 import androidx.lifecycle.Observer;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;

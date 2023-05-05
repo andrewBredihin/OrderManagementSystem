@@ -7,24 +7,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.bav.ordermanagementsystem.R;
-import com.bav.ordermanagementsystem.databinding.FragmentOrderInfoClientBinding;
 import com.bav.ordermanagementsystem.databinding.FragmentOrderInfoEmployeeBinding;
-import com.bav.ordermanagementsystem.databinding.OrderEmployeeTextviewBinding;
 import com.bav.ordermanagementsystem.databinding.OrderInfoActiveBinding;
 import com.bav.ordermanagementsystem.databinding.OrderInfoPendingBinding;
 import com.bav.ordermanagementsystem.db.DatabaseClient;
-import com.bav.ordermanagementsystem.entity.Employee;
 import com.bav.ordermanagementsystem.entity.OrderStatus;
 import com.bav.ordermanagementsystem.service.UserService;
 
@@ -33,7 +28,6 @@ import java.util.Objects;
 import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableCompletableObserver;
-import io.reactivex.observers.DisposableMaybeObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class OrderInfoEmployeeFragment extends Fragment {

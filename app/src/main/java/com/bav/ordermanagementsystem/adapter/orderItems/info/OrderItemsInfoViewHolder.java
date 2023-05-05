@@ -1,7 +1,6 @@
 package com.bav.ordermanagementsystem.adapter.orderItems.info;
 
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bav.ordermanagementsystem.R;
 import com.bav.ordermanagementsystem.adapter.OrderItemRecyclerViewHolderInterface;
 import com.bav.ordermanagementsystem.entity.OrderItem;
-import com.bav.ordermanagementsystem.ui.createOrder.OrderItemsStore;
 
 public class OrderItemsInfoViewHolder extends RecyclerView.ViewHolder implements OrderItemRecyclerViewHolderInterface {
     final TextView itemTitle;

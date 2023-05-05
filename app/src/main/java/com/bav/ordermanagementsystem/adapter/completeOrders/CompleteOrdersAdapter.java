@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bav.ordermanagementsystem.adapter.pendingOrders.PendingOrdersViewHolder;
 import com.bav.ordermanagementsystem.entity.Order;
 
 import java.util.List;

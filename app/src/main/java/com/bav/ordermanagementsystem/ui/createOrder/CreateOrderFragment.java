@@ -1,38 +1,28 @@
 package com.bav.ordermanagementsystem.ui.createOrder;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.bav.ordermanagementsystem.R;
-import com.bav.ordermanagementsystem.activity.LoginActivity;
-import com.bav.ordermanagementsystem.adapter.orderItems.OrderItemsAdapter;
+
 import com.bav.ordermanagementsystem.adapter.orderItems.info.OrderItemsInfoAdapter;
-import com.bav.ordermanagementsystem.adapter.orderItems.info.OrderItemsInfoViewHolder;
 import com.bav.ordermanagementsystem.databinding.FragmentCreateOrderBinding;
-import com.bav.ordermanagementsystem.databinding.FragmentCreateOrderGetItemsBinding;
 import com.bav.ordermanagementsystem.db.DatabaseClient;
-import com.bav.ordermanagementsystem.entity.Client;
 import com.bav.ordermanagementsystem.entity.Order;
 import com.bav.ordermanagementsystem.entity.OrderAndOrderItems;
 import com.bav.ordermanagementsystem.entity.OrderItem;
 import com.bav.ordermanagementsystem.entity.OrderStatus;
 import com.bav.ordermanagementsystem.service.UserService;
-import com.bav.ordermanagementsystem.ui.myOrders.MyOrdersFragment;
-import com.bav.ordermanagementsystem.ui.registration.RegistrationFragment;
-import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

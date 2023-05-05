@@ -5,10 +5,6 @@ import android.content.Context;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.bav.ordermanagementsystem.db.DatabaseClient;
-
-import kotlin.Suppress;
-
 public class UserService{
 
     private Context mCtx;

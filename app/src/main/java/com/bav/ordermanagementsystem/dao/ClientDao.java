@@ -10,7 +10,6 @@ import com.bav.ordermanagementsystem.entity.Client;
 
 import java.util.List;
 
-import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Maybe;
 

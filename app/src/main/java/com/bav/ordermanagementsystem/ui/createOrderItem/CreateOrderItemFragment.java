@@ -15,10 +15,8 @@ import androidx.navigation.Navigation;
 import com.bav.ordermanagementsystem.R;
 import com.bav.ordermanagementsystem.databinding.FragmentCreateOrderItemBinding;
 import com.bav.ordermanagementsystem.db.DatabaseClient;
-import com.bav.ordermanagementsystem.entity.Client;
 import com.bav.ordermanagementsystem.entity.OrderItem;
 import com.bav.ordermanagementsystem.service.UserService;
-import com.bav.ordermanagementsystem.ui.registration.RegistrationFragment;
 
 public class CreateOrderItemFragment extends Fragment {
 

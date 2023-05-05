@@ -10,15 +10,11 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
 import com.bav.ordermanagementsystem.R;
 import com.bav.ordermanagementsystem.adapter.employees.EmployeesAdapter;
-import com.bav.ordermanagementsystem.adapter.myOrders.MyOrdersAdapter;
 import com.bav.ordermanagementsystem.databinding.FragmentManagerPageBinding;
-import com.bav.ordermanagementsystem.databinding.FragmentMyOrdersBinding;
 import com.bav.ordermanagementsystem.db.DatabaseClient;
-import com.bav.ordermanagementsystem.entity.OrderStatus;
 import com.bav.ordermanagementsystem.service.UserService;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;

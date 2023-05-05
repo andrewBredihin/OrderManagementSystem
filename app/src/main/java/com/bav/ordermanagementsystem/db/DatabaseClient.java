@@ -7,8 +7,6 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.bav.ordermanagementsystem.entity.UserRole;
-
 public class DatabaseClient {
 
     private Context mCtx;

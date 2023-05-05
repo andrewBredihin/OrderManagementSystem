@@ -12,9 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bav.ordermanagementsystem.R;
-import com.bav.ordermanagementsystem.adapter.activeOrders.ActiveOrdersAdapter;
 import com.bav.ordermanagementsystem.adapter.pendingOrders.PendingOrdersAdapter;
-import com.bav.ordermanagementsystem.databinding.FragmentActiveOrdersMainBinding;
 import com.bav.ordermanagementsystem.databinding.FragmentPendingOrdersBinding;
 import com.bav.ordermanagementsystem.db.DatabaseClient;
 import com.bav.ordermanagementsystem.entity.OrderStatus;

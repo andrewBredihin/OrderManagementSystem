@@ -1,6 +1,5 @@
 package com.bav.ordermanagementsystem.ui.createOrderItem;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.bav.ordermanagementsystem.databinding.FragmentOrderItemFieldsBinding;
-import com.bav.ordermanagementsystem.db.DatabaseClient;
 import com.bav.ordermanagementsystem.entity.OrderItem;
 
 public class OrderItemFieldsFragment extends Fragment {

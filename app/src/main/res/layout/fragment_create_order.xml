@@ -8,11 +8,12 @@
 
     <EditText
         android:id="@+id/title"
+        style="@style/MyEditTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/title"
-        style="@style/MyEditTextStyle"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +26,7 @@
         style="@style/MyEditTextStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toBottomOf="@+id/title"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/orderItemsList"

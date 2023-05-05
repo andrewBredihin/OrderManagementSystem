@@ -3,36 +3,25 @@ package com.bav.ordermanagementsystem.ui.orderInfo.client;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewStub;
 import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.bav.ordermanagementsystem.R;
-import com.bav.ordermanagementsystem.adapter.myOrders.MyOrdersAdapter;
-import com.bav.ordermanagementsystem.adapter.orderItems.info.OrderItemsInfoAdapter;
 import com.bav.ordermanagementsystem.databinding.FragmentOrderInfoClientBinding;
 import com.bav.ordermanagementsystem.databinding.OrderEmployeeTextviewBinding;
 import com.bav.ordermanagementsystem.db.DatabaseClient;
 import com.bav.ordermanagementsystem.entity.Employee;
-import com.bav.ordermanagementsystem.entity.Order;
-import com.bav.ordermanagementsystem.entity.OrderAndOrderItems;
-import com.bav.ordermanagementsystem.entity.OrderItem;
 import com.bav.ordermanagementsystem.entity.OrderStatus;
 import com.bav.ordermanagementsystem.service.UserService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;

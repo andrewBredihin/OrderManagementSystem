@@ -8,19 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
 import com.bav.ordermanagementsystem.R;
 import com.bav.ordermanagementsystem.adapter.completeOrders.CompleteOrdersAdapter;
-import com.bav.ordermanagementsystem.adapter.employees.EmployeesAdapter;
 import com.bav.ordermanagementsystem.databinding.FragmentManagerEmployeeInfoBinding;
-import com.bav.ordermanagementsystem.databinding.FragmentManagerPageBinding;
 import com.bav.ordermanagementsystem.db.DatabaseClient;
-import com.bav.ordermanagementsystem.entity.Client;
 import com.bav.ordermanagementsystem.entity.Employee;
 import com.bav.ordermanagementsystem.entity.OrderStatus;
 import com.bav.ordermanagementsystem.service.UserService;
