@@ -9,87 +9,103 @@
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/gray">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/frame_info"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            style="@style/MyTextViewStyle"
-            android:text="@string/title"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/list_background">
 
-        <TextView
-            android:id="@+id/order_info_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/MySmallViewStyle"
-            android:text="@{order.title}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title" />
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/MyBigTextViewStyle"
+                android:text="@string/title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/MyTextViewStyle"
-            android:text="@string/address"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/order_info_title" />
+            <TextView
+                android:id="@+id/order_info_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/MyTextViewStyle"
+                android:text="@{order.title}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title" />
 
-        <TextView
-            android:id="@+id/order_info_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/MySmallViewStyle"
-            android:text="@{order.address}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/address" />
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/MyBigTextViewStyle"
+                android:text="@string/address"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/order_info_title" />
 
-        <TextView
-            android:id="@+id/status"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/MyTextViewStyle"
-            android:text="@string/status"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/order_info_address" />
+            <TextView
+                android:id="@+id/order_info_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/MyTextViewStyle"
+                android:text="@{order.address}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/address" />
 
-        <TextView
-            android:id="@+id/order_info_status"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/MySmallViewStyle"
-            android:text="@{order.status}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/status" />
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/MyBigTextViewStyle"
+                android:text="@string/status"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/order_info_address" />
+
+            <TextView
+                android:id="@+id/order_info_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/MyTextViewStyle"
+                android:text="@{order.status}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/status" />
+        </LinearLayout>
 
         <ViewStub
             android:id="@+id/order_info_employee"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout="@layout/order_employee_textview"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/order_info_status" />
+            app:layout_constraintTop_toBottomOf="@+id/frame_info" />
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/orderItemsList"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="20dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/order_info_canceled"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/order_info_employee" />
+            app:layout_constraintTop_toTopOf="@+id/order_info_employee"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/order_info_canceled"
@@ -97,6 +113,7 @@
             android:layout_height="wrap_content"
             style="@style/MyButtonStyle"
             android:text="@string/orderToCanceled"
+            android:background="@drawable/button_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

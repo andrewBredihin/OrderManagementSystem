@@ -9,7 +9,8 @@
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/gray">
 
 
         <Button
@@ -18,6 +19,7 @@
             android:layout_height="wrap_content"
             style="@style/MyButtonStyle"
             android:text="@string/create_new_employee"
+            android:background="@drawable/button_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

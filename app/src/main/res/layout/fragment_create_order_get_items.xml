@@ -10,7 +10,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/gray">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/orderItemsList"
@@ -30,6 +31,7 @@
             android:layout_height="wrap_content"
             android:text="@string/continue_str"
             style="@style/MyButtonStyle"
+            android:background="@drawable/button_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
