@@ -72,7 +72,7 @@ public class CreateOrderFragment extends Fragment {
 
         createOrder = binding.buttonCreateOrder;
         createOrder.setOnClickListener(v -> {
-            if (title.getText().toString().length() < 10){
+            if (title.getText().toString().length() < 5){
                 Toast.makeText(getContext(), R.string.errorCreateOrderTitle, Toast.LENGTH_SHORT).show();
                 return;
             }

@@ -6,6 +6,8 @@ import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.bav.ordermanagementsystem.R;
+
 import java.util.List;
 
 @Entity(tableName = "order", foreignKeys = {
@@ -42,6 +44,10 @@ public class Order {
 
     public Order(String title){
         this.title = title;
+    }
+
+    public String getPriceString(){
+        return price + " " + "Руб";
     }
 
     public Long getId() {

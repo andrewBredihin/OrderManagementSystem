@@ -13,8 +13,8 @@
     <string name="user_update">Информация о пользователе обновлена</string>
     <string name="user_not_update">Ошибка, повторите попытку</string>
 
-    <string name="login">Login</string>
-    <string name="password">Password</string>
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
     <string name="registration">Регистрация</string>
     <string name="loginButtonText">Войти</string>
     <string name="registrationButtonText">Регистрация</string>
@@ -35,11 +35,11 @@
 
     <string name="create_orderItem_button">Создать</string>
     <string name="create_orderItem">Создание OrderItem</string>
-    <string name="manager_page">Страница работников</string>
+    <string name="manager_page">Страница сотрудников</string>
     <string name="create_orderItem_error">Ошибка при создании OrderItem</string>
-    <string name="create_new_employee">Регистрация работника</string>
-    <string name="edit_employee">Редактирование работника</string>
-    <string name="employee_info">Информация о работнике</string>
+    <string name="create_new_employee">Регистрация сотрудника</string>
+    <string name="edit_employee">Редактирование сотрудника</string>
+    <string name="employee_info">Информация о сотруднике</string>
     <string name="user_edit">Редактирование пользователя</string>
 
     <string name="errorFirstNameRegistrationPage">Имя не должно быть короче 1 символа</string>
@@ -59,6 +59,9 @@
     <string name="date">Дата завершения</string>
     <string name="title">Название</string>
     <string name="status">Статус</string>
+    <string name="price_">Цена</string>
+    <string name="client">Клиент</string>
+    <string name="phone">Телефон</string>
     <string name="order_employee">Заказ принял</string>
     <string name="orderCreated">Заказ создан</string>
     <string name="orderCanceled">Заказ отменен</string>
@@ -69,7 +72,7 @@
     <string name="orderComplete">Заказ выполнен</string>
     <string name="orderNotCreated">Ошибка при создании заказа</string>
     <string name="orderItemWasNotSelected">Услуга не выбрана</string>
-    <string name="errorCreateOrderTitle">Название не должно быть короче 10 символов</string>
+    <string name="errorCreateOrderTitle">Название не должно быть короче 5 символов</string>
     <string name="errorCreateOrderAddress">Адрес не должен быть короче 10 символов</string>
 
     <string name="active_orders">Активные заказы</string>

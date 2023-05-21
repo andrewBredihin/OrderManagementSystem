@@ -6,12 +6,14 @@
             <corners android:radius="20.0dip" />
         </shape>
     </item>
-    <item android:bottom="10dip">
+    <item
+        android:bottom="10dip">
         <shape>
-            <corners android:bottomRightRadius=".1dip"
+            <corners
+                android:bottomRightRadius=".1dip"
                 android:bottomLeftRadius="0.1dip"
                 android:topLeftRadius="10dip"
-                android:topRightRadius="10dip"/>
+                android:topRightRadius="10dip" />
 
         </shape>
     </item>

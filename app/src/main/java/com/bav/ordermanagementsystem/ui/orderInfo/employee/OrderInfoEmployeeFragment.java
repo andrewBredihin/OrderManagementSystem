@@ -20,6 +20,8 @@ import com.bav.ordermanagementsystem.databinding.FragmentOrderInfoEmployeeBindin
 import com.bav.ordermanagementsystem.databinding.OrderInfoActiveBinding;
 import com.bav.ordermanagementsystem.databinding.OrderInfoPendingBinding;
 import com.bav.ordermanagementsystem.db.DatabaseClient;
+import com.bav.ordermanagementsystem.entity.Client;
+import com.bav.ordermanagementsystem.entity.Employee;
 import com.bav.ordermanagementsystem.entity.OrderStatus;
 import com.bav.ordermanagementsystem.service.UserService;
 
@@ -28,6 +30,7 @@ import java.util.Objects;
 import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableCompletableObserver;
+import io.reactivex.observers.DisposableMaybeObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class OrderInfoEmployeeFragment extends Fragment {
@@ -50,6 +53,27 @@ public class OrderInfoEmployeeFragment extends Fragment {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(order -> {
                     binding.setOrder(order);
+
+                    databaseClient.getAppDatabase().clientDao().getById(order.getClient_id())
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(new DisposableMaybeObserver<Client>() {
+                                @Override
+                                public void onSuccess(Client client) {
+                                    binding.orderInfoClient.setText(client.getFullName());
+                                }
+
+                                @Override
+                                public void onError(Throwable e) {
+
+                                }
+
+                                @Override
+                                public void onComplete() {
+
+                                }
+                            });
+
                     if (Objects.equals(order.getEmployee_id(), userService.getUserDetails().getValue().getId())){
                         binding.orderInfoOrderActive.setOnInflateListener(new ViewStub.OnInflateListener() {
                             @Override
@@ -133,6 +157,9 @@ public class OrderInfoEmployeeFragment extends Fragment {
                         Navigation.findNavController(container).navigate(R.id.nav_pending_orders);
                     }
                 });
+
+
+
 
         //Прописать получение списка своих OrderItem по `getArguments().getLong("orderId")` и таблице `order_and_order_items`
         /*List<OrderItem> items;

@@ -18,6 +18,7 @@ import com.bav.ordermanagementsystem.R;
 import com.bav.ordermanagementsystem.databinding.FragmentEmployeeEditBinding;
 import com.bav.ordermanagementsystem.db.DatabaseClient;
 import com.bav.ordermanagementsystem.entity.Employee;
+import com.bav.ordermanagementsystem.entity.UserRole;
 import com.bav.ordermanagementsystem.service.UserService;
 
 import io.reactivex.Completable;
@@ -71,7 +72,10 @@ public class EmployeeEditFragment extends Fragment {
                         public void onComplete() {
                             userService.setUserDetails(employee);
                             Toast.makeText(getContext(), R.string.user_update, Toast.LENGTH_SHORT).show();
-                            Navigation.findNavController(root).navigate(R.id.nav_active_orders);
+                            if (userService.getUserDetails().getValue().getRole().equals(UserRole.EMPLOYEE))
+                                Navigation.findNavController(root).navigate(R.id.nav_active_orders);
+                            else
+                                Navigation.findNavController(root).navigate(R.id.nav_employees_page);
                         }
 
                         @Override
