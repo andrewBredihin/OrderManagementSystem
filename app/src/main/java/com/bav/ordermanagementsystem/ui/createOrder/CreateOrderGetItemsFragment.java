@@ -26,6 +26,7 @@ public class CreateOrderGetItemsFragment extends Fragment {
 
     private FragmentCreateOrderGetItemsBinding binding;
     private OrderItemsStore store;
+    private int a;
 
     @Nullable
     @Override
